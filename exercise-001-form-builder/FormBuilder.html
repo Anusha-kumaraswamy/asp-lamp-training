@@ -4,74 +4,9 @@
     <title>Form Builder</title>
 </head>
 <body>
-    <script>
-        //json string that gives the data to build the form 
-        var jsonForm = '{"registration": [{"fieldName":"firstName","fieldTagName":"input","fieldType":"text","description":"First name","pattern":"([a-zA-Z][ ]?)+","fieldRequirement":"true"},{"fieldName":"lastName","fieldTagName":"input","fieldType":"text","description":"Last name", "pattern":"([a-zA-Z][ ]?)+"},{"fieldName":"age","fieldTagName":"input","fieldType":"number","description":"Age","min":"5"},{"fieldName":"email","fieldTagName":"input","fieldType":"email","description":"E-mail","pattern":"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}","fieldRequirement":"true"},{"fieldName":"password","fieldTagName":"input","fieldType":"password","description":"Password","fieldRequirement":"true"},{"fieldName":"mobile","fieldTagName":"input","fieldType":"text","description":"Mobile number", "pattern":"[7-9][0-9]{9}","fieldRequirement":"true"},{"fieldName":"gender","fieldType":"radio","fieldTagName":"input","description":"Gender","fieldValue":"Male","fieldRequirement":"true"},{"fieldName":"gender","fieldType":"radio","fieldTagName":"input","description":"Gender","fieldValue":"Female","fieldRequirement":"true"},{"fieldName":"department","fieldTagName":"select","description":"Department","options":["Lamp","Mobility","Bigdata"]},{"fieldValue":"Register","fieldName":"Register","fieldTagName":"input","fieldType":"submit","description":"Register","action":"http://www.register.com"}]}';  
-        //parsing json string to json object
-        var jsForm = JSON.parse(jsonForm);
-        // The form element is created and its attributes are set into which all the tags are appended
-        var form = document.createElement("form");
-        var formTitle = document.createElement("h1");
-        var formKeyName = Object.keys(jsForm)[0];
-        var formTitleContent = document.createTextNode(formKeyName.toUpperCase());
-        formTitle.appendChild(formTitleContent);
-        form.appendChild(formTitle);
-        form.setAttribute("method","post");
-        form.setAttribute("name",formKeyName);
-        //Looping to append each element which is in the form of array in the json object
-        for (var iteration = 0; iteration < jsForm[formKeyName].length; iteration++) { 
-            var appendTag = document.createElement(jsForm[formKeyName][iteration]["fieldTagName"]);
-            //Appending select tags if available
-            if (jsForm[formKeyName][iteration]["fieldTagName"] === "select") {
-                var selectLabelTag = document.createElement("label");
-                selectLabelTag.innerHTML = jsForm[formKeyName][iteration]["description"] + " : ";
-                form.appendChild(selectLabelTag);
-                for (var optionIndex = 0; optionIndex < jsForm[formKeyName][iteration]["options"].length; optionIndex++) { 
-                    var opt = document.createElement('option');
-                    opt.value = jsForm[formKeyName][iteration]["options"][optionIndex];
-                    opt.innerHTML = jsForm[formKeyName][iteration]["options"][optionIndex];
-                    opt.name = jsForm[formKeyName][iteration]["options"][optionIndex]; 
-                    appendTag.appendChild(opt);
-                }
-            }
-            //Appending the common attributes of all the tags
-            appendTag.setAttribute("type", jsForm[formKeyName][iteration]["fieldType"]);
-            appendTag.setAttribute("name", jsForm[formKeyName][iteration]["fieldName"]);
-            appendTag.required = jsForm[formKeyName][iteration]["fieldRequirement"];
-            //Appending the value attribute if mentioned
-            if (jsForm[formKeyName][iteration]["fieldValue"]) {
-                appendTag.setAttribute("value", jsForm[formKeyName][iteration]["fieldValue"]);
-            }
-            form.appendChild(appendTag);
-            //Attributes that are available for specific tags are appended using switch case
-            switch (jsForm[formKeyName][iteration]["fieldType"]) {
-            case "radio":
-            case "checkbox":
-                if (jsForm[formKeyName][iteration]["fieldType"] === "radio"|| jsForm[formKeyName][iteration]["fieldType"] === "checkbox") {
-                    var labelTag = document.createElement("label");
-                    labelTag.innerHTML = jsForm[formKeyName][iteration]["fieldValue"];
-                    form.appendChild(labelTag);
-                }
-                break;
-            case "submit":
-                appendTag.setAttribute("formaction", jsForm[formKeyName][iteration]["action"]);
-                break;
-            case "number":
-                appendTag.setAttribute("min", jsForm[formKeyName][iteration]["min"]);
-                appendTag.setAttribute("max", jsForm[formKeyName][iteration]["max"]);
-            case "text":
-            case "email":
-            case "url":
-            case "password":
-                if (jsForm[formKeyName][iteration]["pattern"]) {
-                    appendTag.setAttribute("pattern", jsForm[formKeyName][iteration]["pattern"]);
-                }
-                appendTag.setAttribute("placeholder", jsForm[formKeyName][iteration]["description"]);
-            }
-            var nextLine = document.createElement("br");
-            form.appendChild(nextLine);
-        }
-        document.body.appendChild(form);
-    </script>
 </body>
 </html>
+<script type = "text/javascript" src = "http://172.24.145.152/asp-lamp-training/exercise-001-form-builder/js/config.js">
+</script>
+<script type = "text/javascript" src = "http://172.24.145.152/asp-lamp-training/exercise-001-form-builder/js/form-builder.js">
+</script>
