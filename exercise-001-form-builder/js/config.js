@@ -5,6 +5,7 @@ const RADIO_TYPE = "radio";
 const CHECKBOX_TYPE = "checkbox";
 const SUBMIT_TYPE = "submit";
 const NUMBER_TYPE = "number";
+const RANGE_TYPE = "range";
 const TEXT_TYPE = "text";
 const EMAIL_TYPE = "email";
 const URL_TYPE = "url";
