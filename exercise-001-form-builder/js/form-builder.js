@@ -1,10 +1,19 @@
-//To get the json string that gives the data to build the form 
+/**
+ * To get the json string that gives the data to build the form 
+ * 
+ * @return string
+ */
 function getJsonForm() {
     var jsonForm = '{"registration": [{"fieldName":"firstName","fieldTagName":"input","fieldType":"text","description":"First name","pattern":"^([a-zA-Z][ ]?)+$","fieldRequirement":"true","minLength":"3","maxLength":"20"},{"fieldName":"lastName","fieldTagName":"input","fieldType":"text","description":"Last name", "pattern":"^([a-zA-Z][ ]?)+$","minLength":"3","maxLength":"20"},{"fieldName":"age","fieldTagName":"input","fieldType":"number","description":"Age","min":"5","max":"150","fieldRequirement":"true"},{"fieldName":"email","fieldTagName":"input","fieldType":"email","description":"E-mail","pattern":"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$","fieldRequirement":"true"},{"fieldName":"password","fieldTagName":"input","fieldType":"password","description":"Password","fieldRequirement":"true"},{"fieldName":"mobile","fieldTagName":"input","fieldType":"text","description":"Mobile number", "pattern":"^[7-9][0-9]{9}$","fieldRequirement":"true"},{"fieldName":"gender","fieldType":"radio","fieldTagName":"input","description":"Gender","fieldValue":"Male","fieldRequirement":"true"},{"fieldName":"gender","fieldType":"radio","fieldTagName":"input","description":"Gender","fieldValue":"Female","fieldRequirement":"true"},{"fieldName":"department","fieldTagName":"select","description":"Department","options":["Lamp","Mobility","Bigdata"]},{"fieldValue":"Register","fieldName":"Register","fieldTagName":"input","fieldType":"submit","description":"Register","action":"http://www.register.com"}]}';
     return jsonForm;
 }
 
-//To set attributes for the form
+/**
+ * To set attributes for the form
+ * 
+ * @param string formKeyName
+ * @return object
+ */
 function setFormAttributes(formKeyName) {
     var newForm = document.createElement("form");
     var formTitle = document.createElement("h1");
@@ -17,8 +26,14 @@ function setFormAttributes(formKeyName) {
     newForm.setAttribute("onsubmit", "return validate(this)");
     return newForm;
 }
-    
-//To set attributes for the select tag 
+
+/**
+ * To set attributes for the select tag 
+ * 
+ * @param object select
+ * @param object appendTag
+ * @param object parentTag
+ */
 function setSelectTagAttributes(select, appendTag, parentTag) {
     var selectLabelTag = document.createElement("label");
     selectLabelTag.innerHTML = select["description"] + " : ";
@@ -32,7 +47,12 @@ function setSelectTagAttributes(select, appendTag, parentTag) {
     }
 }
 
-//To set common tag attributes
+/**
+ * To set common tag attributes
+ * 
+ * @param object common
+ * @param object appendTag
+ */
 function setCommonTagAttributes(common, appendTag) {
     appendTag.setAttribute("type", common["fieldType"]);
     if (common["fieldValue"]) {
@@ -40,7 +60,15 @@ function setCommonTagAttributes(common, appendTag) {
     }
 }
 
-//To check for pattern validation
+/**
+ * To check for pattern validation
+ * 
+ * @param object field
+ * @param object messageSpan
+ * @param string pattern
+ *
+ * @return boolean
+ */
 function validatePattern(field, messageSpan, pattern) {
     pattern = new RegExp(pattern); 
     if (!pattern.test(field.value)) {
@@ -50,7 +78,13 @@ function validatePattern(field, messageSpan, pattern) {
     }
 }
 
-//TO validate the fields
+/**
+ * To validate the fields
+ * 
+ * @param object form
+ *
+ * @return boolean
+ */
 function validate(form) {
     validityCheck = validateInputFields(form);
     if (!validityCheck) {
@@ -60,7 +94,12 @@ function validate(form) {
     }
 }
 
-//To check if it is required field
+/**
+ * To check if it is required field
+ * 
+ * @param string valueRequired
+ * @param object messageSpan
+ */
 function isRequired(valueRequired, messageSpan) {
     if (valueRequired) {
         messageSpan.innerHTML = "*Please fill this field";
@@ -69,7 +108,14 @@ function isRequired(valueRequired, messageSpan) {
     }
 }
 
-//To validate the text field
+/**
+ * To validate the text field
+ * 
+ * @param object field
+ * @param object messageSpan
+ *
+ * @return boolean
+ */
 function validateTextField(field, messageSpan) {
     var pattern = field.getAttribute("pattern-check");
     var minLength = field.getAttribute("minLength");
@@ -96,7 +142,15 @@ function validateTextField(field, messageSpan) {
     return true;
 }
 
-//To validate number field
+
+/**
+ * To validate number field
+ * 
+ * @param object field
+ * @param object messageSpan
+ *
+ * @return boolean
+ */
 function validateNumberField(field, messageSpan) {
     var minValue = field.getAttribute("min");
     var maxValue = field.getAttribute("max");
@@ -116,7 +170,14 @@ function validateNumberField(field, messageSpan) {
     return true;
 }
 
-//To validate the input fields
+
+/**
+ * To validate the input fields
+ * 
+ * @param object form
+ *
+ * @return boolean
+ */
 function validateInputFields(form) {
     var fields = form.getElementsByClassName("inputField");
     var messageSpans = form.getElementsByClassName("errorMessage");
@@ -168,7 +229,14 @@ function validateInputFields(form) {
     }
 }
 
-//To set attributes for the input tag
+
+/**
+ * To set attributes for the input tag
+ * 
+ * @param object inpur
+ * @param object appendTag
+ * @param object parentTag
+ */
 function setInputTagAttributes(input, appendTag, parentTag) {
     switch (input["fieldType"]) {
     case RADIO_TYPE:
@@ -204,20 +272,35 @@ function setInputTagAttributes(input, appendTag, parentTag) {
     }
 }
 
-//To add new line
+
+/**
+ * To add new line
+ * 
+ * @param object parentTag
+ *
+ */
 function addNewLine(parentTag) {
     var nextLine = document.createElement("br");
     appendChildTag(nextLine, parentTag);
 }
 
-//To append a new tag to the parent tag
+
+/**
+ * To append a new tag to the parent tag
+ * 
+ * @param object childTag
+ * @param object parentTag
+ */
 function appendChildTag(childTag, parentTag) {
     parentTag.appendChild(childTag);
 }
 
 window.onload = loadForm;
 
-//To load the form
+
+/**
+ * To load the form
+ */
 function loadForm() {
     var jsonString = getJsonForm();
     var jsForm = JSON.parse(jsonString);
