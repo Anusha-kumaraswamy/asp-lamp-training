@@ -2,19 +2,71 @@
 <html>
 <head></head>
 <body>
-<table class = “simple”>   
-    <th>heading1</th>
+<table class = "simple">
     <tr>
-    <td>row1</td>    
-    <td>row2</td>
+        <th>
+            Heading
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Row
+        </td>
     </tr>
 </table>
-<table class = “complex”>
-    <th>heading2</th>
+<table class = "complex">     
     <tr>
-    <td>row1</td>    
-    <td>row2</td>
+        <th>
+           Name
+        </th>
+         <th>
+           Age
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Roshini
+        </td>
+        <td>
+            25
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Rahul
+        </td>
+        <td>
+           23
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Arasan
+        </td>
+        <td>
+            22
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Abdul
+        </td>
+        <td>
+            28
+        </td>
     </tr>
 </table>
+<script type="text/javascript">
+    var selectAllTables = document.querySelectorAll("table");
+    var firstTable = selectAllTables[0].children[0];
+    var secondTable = selectAllTables[1].children[0];
+    var headingRow = firstTable.children[0];
+    headingRow.children[0].style.fontWeight = "bold";
+    for (var iteration = 2; iteration < secondTable.children.length; iteration++) { 
+        if (iteration % 2 == 0) {
+            secondTable.children[iteration].style.backgroundColor = "grey";
+        }
+    }
+</script>
 </body>
 <html>
