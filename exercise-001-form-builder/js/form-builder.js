@@ -4,7 +4,90 @@
  * @return string
  */
 function getJsonForm() {
-    var jsonForm = '{"registration": [{"fieldName":"firstName","fieldTagName":"input","fieldType":"text","description":"First name","pattern":"^([a-zA-Z][ ]?)+$","fieldRequirement":"true","minLength":"3","maxLength":"20"},{"fieldName":"lastName","fieldTagName":"input","fieldType":"text","description":"Last name", "pattern":"^([a-zA-Z][ ]?)+$","minLength":"3","maxLength":"20"},{"fieldName":"age","fieldTagName":"input","fieldType":"number","description":"Age","min":"5","max":"150","fieldRequirement":"true"},{"fieldName":"email","fieldTagName":"input","fieldType":"email","description":"E-mail","pattern":"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$","fieldRequirement":"true"},{"fieldName":"password","fieldTagName":"input","fieldType":"password","description":"Password","fieldRequirement":"true"},{"fieldName":"mobile","fieldTagName":"input","fieldType":"text","description":"Mobile number", "pattern":"^[7-9][0-9]{9}$","fieldRequirement":"true"},{"fieldName":"gender","fieldType":"radio","fieldTagName":"input","description":"Gender","fieldValue":"Male","fieldRequirement":"true"},{"fieldName":"gender","fieldType":"radio","fieldTagName":"input","description":"Gender","fieldValue":"Female","fieldRequirement":"true"},{"fieldName":"department","fieldTagName":"select","description":"Department","options":["Lamp","Mobility","Bigdata"]},{"fieldValue":"Register","fieldName":"Register","fieldTagName":"input","fieldType":"submit","description":"Register","action":"http://www.register.com"}]}';
+    var jsonForm = `{"registration": 
+                        [
+                            {
+                                "fieldName":"firstName",
+                                "fieldTagName":"input",
+                                "fieldType":"text",
+                                "description":"First name",
+                                "pattern":"^([a-zA-Z][ ]?)+$",
+                                "fieldRequirement":"true",
+                                "minLength":"3",
+                                "maxLength":"20"
+                            },
+                            {
+                                "fieldName":"lastName",
+                                "fieldTagName":"input",
+                                "fieldType":"text",
+                                "description":"Last name",
+                                "pattern":"^([a-zA-Z][ ]?)+$",
+                                "minLength":"3",
+                                "maxLength":"20"
+                            },
+                            {
+                                "fieldName":"age",
+                                "fieldTagName":"input",
+                                "fieldType":"number",
+                                "description":"Age",
+                                "min":"5","max":"150",
+                                "fieldRequirement":"true"
+                            },
+                            {
+                                "fieldName":"email",
+                                "fieldTagName":"input",
+                                "fieldType":"email",
+                                "description":"E-mail",
+                                "pattern":"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$",
+                                "fieldRequirement":"true"
+                            },
+                            {
+                                "fieldName":"password",
+                                "fieldTagName":"input",
+                                "fieldType":"password",
+                                "description":"Password",
+                                "fieldRequirement":"true"
+                            },
+                            {
+                                "fieldName":"mobile",
+                                "fieldTagName":"input",
+                                "fieldType":"text",
+                                "description":"Mobile number",
+                                "pattern":"^[7-9][0-9]{9}$",
+                                "fieldRequirement":"true"
+                            },
+                            {
+                                "fieldName":"gender",
+                                "fieldType":"radio",
+                                "fieldTagName":"input",
+                                "description":"Gender",
+                                "fieldValue":"Male",
+                                "fieldRequirement":"true"
+                            },
+                            {
+                                "fieldName":"gender",
+                                "fieldType":"radio",
+                                "fieldTagName":"input",
+                                "description":"Gender",
+                                "fieldValue":"Female",
+                                "fieldRequirement":"true"
+                            },
+                            {
+                                "fieldName":"department",
+                                "fieldTagName":"select",
+                                "description":"Department",
+                                "options":["Lamp","Mobility","Bigdata"]
+                            },
+                            {
+                                "fieldValue":"Register",
+                                "fieldName":"Register",
+                                "fieldTagName":"input",
+                                "fieldType":"submit",
+                                "description":"Register",
+                                "action":"http://www.register.com"
+                            }
+                        ]
+                    }`;
     return jsonForm;
 }
 
