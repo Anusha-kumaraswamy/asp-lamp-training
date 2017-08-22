@@ -2,11 +2,6 @@
 <html>
 <head>
     <title>Assignment-2 Exercise-5</title>
-    <style type="text/css">
-        a[href^="http:"] {
-            color: red;
-        }
-    </style>
 </head>
 <body>
     <a href="http://example.comabout-us">About Us</a>
@@ -14,5 +9,13 @@
     <a href="http://example.com/disclaimer">Disclaimer</a>
     <a href="https://example.com/register">Register</a>
     <a href="https://example.com/login">Login</a>
+    <script>
+        var aTags = document.getElementsByTagName("a"); 
+        for (iteration = 0;iteration < aTags.length;iteration++) {
+        	if (aTags[iteration].protocol == "http:") { 
+        		aTags[iteration].style.color = "red";
+        	}
+        }
+    </script>
 </body>
 </html>

@@ -2,6 +2,17 @@
 <html>
 <head>
     <title>Assignment-2 Exercise-3</title>
+    <style type="text/css">
+        section h2 + p {
+            color: red;
+        } 
+        section div > p {
+            color: blue;
+        }
+        section div + p {
+            color: yellow;
+        }
+    </style>
 </head>
 <body>
     <p>...</p>
@@ -14,13 +25,4 @@
         <p>This paragraph should be in yellow</p>
     </section>
 </body>
-<script type="text/javascript">
-    var paraTags = document.querySelectorAll("p"); 
-    for (iteration = 0;iteration < paraTags.length;iteration++ ) {
-        var paraContent = paraTags[iteration].textContent;
-        indexOfColor = paraContent.lastIndexOf(" ");
-        color = paraContent.slice(indexOfColor);
-        paraTags[iteration].style.color = color;
-    }
-</script>
 </html>

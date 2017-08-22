@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment-2 Exercise-2</title>
+</head>
+<body>
+    <div class = "content">
+        <p>Welcome back Guest!</p>
+        <div>
+            <p>Good Morning</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var contentDiv = document.getElementsByClassName("content"); 
+        for (var iteration = 0;iteration < contentDiv[0].children.length; iteration++ ) {
+        	if (contentDiv[0].children[iteration].tagName == "P") {
+        		contentDiv[0].children[iteration].style.fontWeight = "bold";
+        	}
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment-2 Exercise-4</title>
+</head>
+<body>
+    <a href=”about-us” >About Us</a>
+    <a href=”policy” >Policy</a>
+    <a href=”disclaimer” >disclaimer</a>
+    <script type="text/javascript">
+    	var aTags = document.getElementsByTagName("a");
+    	for (iteration = 0;iteration < aTags.length;iteration++) {
+    		if (aTags[iteration].pathname.search("disclaimer") === -1) {
+    			aTags[iteration].style.color = "green";
+    		} else {
+    			aTags[iteration].style.color = "red";
+    		}
+    	}
+    </script>
+</body>
+</html>
