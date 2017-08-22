@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <title>Assignment-2 Exercise-1</title>
+</head>
+<body>
+<table class = "simple">
+    <tr>
+        <th>
+            Heading
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Row
+        </td>
+    </tr>
+</table>
+<table class = "complex">     
+    <tr>
+        <th>
+           Name
+        </th>
+         <th>
+           Age
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Roshini
+        </td>
+        <td>
+            25
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Rahul
+        </td>
+        <td>
+           23
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Arasan
+        </td>
+        <td>
+            22
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Abdul
+        </td>
+        <td>
+            28
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+    var selectAllTables = document.querySelectorAll("table");
+    var firstTable = selectAllTables[0].children[0];
+    var secondTable = selectAllTables[1].children[0];
+    var headingRow = firstTable.children[0];
+    headingRow.children[0].style.fontWeight = "bold";
+    for (var iteration = 0; iteration < secondTable.children.length; iteration++) { 
+        if (iteration % 2 == 1) {
+            secondTable.children[iteration].style.backgroundColor = "grey";
+        }
+    }
+</script>
+</body>
+<html>
