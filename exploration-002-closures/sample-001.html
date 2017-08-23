@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Closure Sample-1</title>
+</head>
+<body>
+    <p>Enter the string to be concatenated to the existing string at the output</p>
+    <p>Output : <span id="display"></span></p>
+    <input id="newValue" type="text" name="content">
+    <input type="button" name="concat" value="Click to concatenate to existing text" onclick="callConcatenator()">
+    <input type="button" name="reset" value="Click to reset" onclick="reset()">
+    <script type="text/javascript">
+        var concatenate = function() {
+            var lastValue = "";
+            var addToPrevious = function(newValue) {
+                lastValue = lastValue + " " + newValue;
+                return lastValue;
+            };
+            return addToPrevious;
+        }; 
+        var concatenator = new concatenate();
+        function callConcatenator() {	
+            var inputValue = document.getElementById("newValue").value;
+            document.getElementById("display").innerHTML = concatenator(inputValue);
+            document.getElementById("newValue").value = "";
+        }
+        function reset() {
+            document.getElementById("display").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
