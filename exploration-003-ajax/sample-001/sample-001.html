@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax Sample-1</title>
+</head>
+<body>
+    <select id="colors" onchange="selectColor(this)">
+    </select>
+    <p id="para">Pick a color to change the background color</p>
+<script>
+(function() { 
+    var httpRequest;
+    httpRequest = new XMLHttpRequest();
+    if (!httpRequest) {
+        document.getElementById("para").innerHTML = "Could not create http request!!";
+        return false;
+    }
+    httpRequest.onreadystatechange = getJSON;
+    httpRequest.open('GET', 'sample-001-content.html');
+    httpRequest.send();
+    
+    function getJSON() {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+                var jsonString = httpRequest.responseText;
+                var jsonContent = JSON.parse(jsonString);
+                loadColors(jsonContent);
+            } else {
+                document.getElementById("para").innerHTML = 'There was a problem with the request.';
+            }
+        }
+    }
+})();
+function loadColors(jsonContent) {
+    var selectColor = document.getElementById("colors"); 
+    jsonContentKeys = Object.keys(jsonContent);
+    for (iteration = 0;iteration < jsonContentKeys.length;iteration++) {
+        var appendOption = document.createElement("option");
+        appendOption.value = jsonContentKeys[iteration];
+        appendOption.innerHTML = jsonContentKeys[iteration];
+        selectColor.appendChild(appendOption);
+    }
+}
+function selectColor(color) {
+    document.body.style.backgroundColor = color.value;
+}
+</script>
+</body>
+</html>
