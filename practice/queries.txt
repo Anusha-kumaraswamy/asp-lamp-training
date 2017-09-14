@@ -1,0 +1,8 @@
+﻿
+Queries practiced:
+
+select distinct user_id, graduation_id from user_graduation order by graduation_id desc;
+ select distinct graduation_id, a.user_id from user_graduation inner join (select distinct user_id from user_graduation) as a;
+select distinct login_name from (SELECT u.login_name, g.name from user_profile u cross join user_graduation ug right outer join graduation_level g on u.id = ug.user_id and ug.graduation_id = g.id order by g.id desc) as a;
+select distinct (login_name), name as level from (SELECT u.login_name, g.name from user_profile u cross join user_graduation ug right outer join graduation_level g on u.id = ug.user_id and ug.graduation_id = g.id) as a;
+select distinct(login_name)  from (select * from user_profile) as a;
