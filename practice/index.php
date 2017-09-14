@@ -20,12 +20,19 @@ and open the template in the editor.
             $connection = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            $statement = $connection->prepare("SELECT u1.login_name, u2.login_name from user_profile u1 cross join user_profile u2 where u1.login_name <> u2.login_name");
+            $statement = $connection->prepare(" SELECT u.login_name, g.name from user_profile u inner join user_graduation ug inner join graduation_level g on u.id = ug.user_id and ug.graduation_id = g.id and ug.graduation_id = :graduationLevel;
+");
+            $statement->bindParam(':graduationLevel', $graduationLevel);
+            $graduationLevel = 4; 
+            
             $statement->execute();
-            while ($row = $statement->fetch()) {
-                echo $row[1];
-                echo $row[0];
-                echo "<br>";
+            if ($row = $statement->fetch()) {
+                echo $row['name'];
+                echo '<br>';
+                do {
+                    echo $row['login_name'];
+                    echo "<br>";
+                }while ($row = $statement->fetch());
             }
         }
         catch(PDOException $e)
