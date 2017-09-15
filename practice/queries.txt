@@ -1,8 +1,66 @@
-﻿
-Queries practiced:
+﻿Queries practiced:
 
 select distinct user_id, graduation_id from user_graduation order by graduation_id desc;
- select distinct graduation_id, a.user_id from user_graduation inner join (select distinct user_id from user_graduation) as a;
+select distinct graduation_id, a.user_id from user_graduation inner join (select distinct user_id from user_graduation) as a;
 select distinct login_name from (SELECT u.login_name, g.name from user_profile u cross join user_graduation ug right outer join graduation_level g on u.id = ug.user_id and ug.graduation_id = g.id order by g.id desc) as a;
++------------+
+| login_name |
++------------+
+| Mathi      |
+| Kowsalya   |
+| Pavithra   |
+| Anu        |
+| Aarthi     |
++------------+
+
 select distinct (login_name), name as level from (SELECT u.login_name, g.name from user_profile u cross join user_graduation ug right outer join graduation_level g on u.id = ug.user_id and ug.graduation_id = g.id) as a;
++------------+-----------+
+| login_name | level     |
++------------+-----------+
+| Mathi      | 10th      |
+| Kowsalya   | 10th      |
+| Pavithra   | 10th      |
+| Anu        | 10th      |
+| Aarthi     | 10th      |
+| Mathi      | 12th      |
+| Kowsalya   | 12th      |
+| Pavithra   | 12th      |
+| Anu        | 12th      |
+| Aarthi     | 12th      |
+| Mathi      | Doctorate |
+| Mathi      | PG        |
+| Aarthi     | PG        |
+| Mathi      | UG        |
+| Anu        | UG        |
+| Aarthi     | UG        |
++------------+-----------+
+
 select distinct(login_name)  from (select * from user_profile) as a;
+select a.name, g.name from (SELECT user_profile.login_name as name, MAX(ugrad.graduation_id) as graduation_id      from user_profile inner join user_graduation as ugrad on user_profile.id = ugrad.user_id group by ugrad.user_id)as a join graduation_level g where g.id = a.graduation_id;
++----------+-----------+
+| name     | name      |
++----------+-----------+
+| Pavithra | 12th      |
+| Kowsalya | 12th      |
+| Mathi    | Doctorate |
+| Aarthi   | PG        |
+| Anu      | UG        |
++----------+-----------+
+
+select a.login_name, g.name as graduation_level from (select u.login_name, MAX(ug.graduation_id) as grad_id from user_profile u inner join user_graduation ug on u.id = ug.user_id where ug.graduation_id >= 4 group by u.login_name)as a inner join graduation_level g on g.id = a.grad_id;
++------------+------------------+
+| login_name | graduation_level |
++------------+------------------+
+| Mathi      | Doctorate        |
+| Aarthi     | PG               |
++------------+------------------+
+
+select a.login_name, g.name as graduation_level from (select u.login_name, MAX(ug.graduation_id) as grad_id from user_profile u inner join user_graduation ug on u.id = ug.user_id group by u.login_name)as a inner join graduation_level g on g.id = a.grad_id where a.grad_id < (select id from graduation_level where name = "PG");
++------------+------------------+
+| login_name | graduation_level |
++------------+------------------+
+| Kowsalya   | 12th             |
+| Pavithra   | 12th             |
+| Anu        | UG               |
++------------+------------------+
+
