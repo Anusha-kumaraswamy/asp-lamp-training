@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% block stylesheets %}
+    {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% block navbar %}
+        {{ parent() }}
+    {% endblock %}
+    {% block table %}
+        {% for entity in entities %}
+            <tr>
+                <td>{{entity}}</td>
+            </tr>
+        {% endfor %}
+    {% endblock %}
+{% endblock %}

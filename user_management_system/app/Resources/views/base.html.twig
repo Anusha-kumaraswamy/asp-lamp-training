@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}User Management System{% endblock %}</title>
+        <style>
+            <link rel = "stylesheet" type = "text/css" href = "https://bootswatch.com/cerulean/bootstrap.css">
+        </style>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body> 
+            {% block navbar %}{% endblock %}
+            <table>{% block table %}{% endblock %}</table>
+            {% block form %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

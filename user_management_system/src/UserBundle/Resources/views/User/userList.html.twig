@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% block stylesheets %}
+    {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% block navbar %}
+        {{ parent() }}
+    {% endblock %}
+    {% block table %}
+        {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.loginName}}</td>
+                <td><a href="users/{{user.id}}">View</a></td>
+            </tr>
+        {% endfor %}
+    {% endblock %}
+{% endblock %}
