@@ -100,9 +100,9 @@ class Form
         return $this->emailIds;
     }
 
-    public function setEmailIds($emailIDs)
+    public function setEmailIds($emailIds)
     {
-        $this->emailIds = $emailIDs;
+        $this->emailIds = $emailIds;
     }
     
     public function getContactNumbers()

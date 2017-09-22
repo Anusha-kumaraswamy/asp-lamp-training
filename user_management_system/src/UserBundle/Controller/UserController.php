@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
@@ -25,7 +27,7 @@ class UserController extends Controller
      */
     public function listAction()
     {
-        $users = array (['loginName' => 'aarthi','id' =>1], ['loginName' => 'anu','id' =>2], ['loginName' => 'pavi','id' =>3]); 
+        $users = array (['login_name' => 'aarthi','id' =>1], ['login_name' => 'anu','id' =>2], ['login_name' => 'pavi','id' =>3]); 
         return $this->render('UserBundle:User:userList.html.twig', array('users' => $users));
     }
     
@@ -34,7 +36,8 @@ class UserController extends Controller
      */
     public function displayAction()
     {
-        return $this->render('UserBundle:User:userProfile.html.twig');
+        $entities = array (['login_name' => 'aarthi','first_name' =>'aarthi', 'last_name' => 'kumar']);
+        return $this->render('UserBundle:User:userProfile.html.twig', array('entities' => $entities));
     }
     
     /**
@@ -68,6 +71,13 @@ class UserController extends Controller
                 ),
                 'expanded' => true,
                 'multiple' => true
+                ))
+            ->add('emailIds', CollectionType::class, array(
+                'entry_type'   => EmailType::class,
+                'entry_options'  => array(
+                    'attr'      => array('class' => 'email-id')
+                ),
+                'allow_add' => true ,
                 ))
             ->add('register', SubmitType::class, array('label' => 'Register'))
             ->getForm();

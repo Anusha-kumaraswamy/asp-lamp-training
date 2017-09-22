@@ -11,10 +11,19 @@
         {{ parent() }}
     {% endblock %}
     {% block table %}
-        {% for entity in entities %}
-            <tr>
-                <td>{{entity}}</td>
-            </tr>
-        {% endfor %}
+        <table>
+            {% for entity in entities %}
+                {% for key in entity|keys %}
+                    <tr>
+                        <td>{{(key|split('_'))|join(' ')|capitalize}}</td>
+                        <td>{{entity[key]}}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+    {% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('bundles/user/js/createTable.js') }}">            
+        </script>
     {% endblock %}
 {% endblock %}

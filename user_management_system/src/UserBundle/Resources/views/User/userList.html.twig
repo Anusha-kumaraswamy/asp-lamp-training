@@ -11,12 +11,19 @@
         {{ parent() }}
     {% endblock %}
     {% block table %}
-        {% for user in users %}
+        <table>
             <tr>
-                <td>{{user.id}}</td>
-                <td>{{user.loginName}}</td>
-                <td><a href="users/{{user.id}}">View</a></td>
+                {% for key in users[0]|keys %}
+                    <td>{{(key|split('_'))|join(' ')|capitalize}}</td>
+                {% endfor %}
             </tr>
-        {% endfor %}
+            {% for user in users %}
+                <tr>
+                    {% for key in user|keys %}
+                        <td>{{user[key]}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
     {% endblock %}
 {% endblock %}

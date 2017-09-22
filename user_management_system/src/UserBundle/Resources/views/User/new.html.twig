@@ -2,7 +2,10 @@
 
 {% block head %}
     {% block stylesheets %}
-    {{ parent() }}
+    
+    body {
+        color : red;
+    }
     {% endblock %}
 {% endblock %}
 
@@ -11,8 +14,48 @@
         {{ parent() }}
     {% endblock %}
     {% block form %}
-        {{ form_start(form, { 'attr' : { 'novalidate' : 'novalidate' }}) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
+        {{ form_label(form.emailIds) }}
+        
+        {% for emailField in form.emailIds %}
+            {{ form_widget(emailField) }}
+            {{ form_errors(emailField) }}
+        {% endfor %}
+        <input type='button' id='addEmailId' value='+' onclick='addField(this)'
+               data-prototype="{{ form_widget(form.emailIds.vars.prototype)|e}}">
+        <input type='button' id='removeEmailId' value='-' onclick='removeField()'>
+    {% endblock %}
+    {% block javascripts %}
+        <script>
+            var emailList = document.getElementById('addEmailId');
+            function addField(field)
+            {
+                alert(field.data-prototype);
+            }
+        {# // keep track of how many email fields have been rendered
+    var emailCount = '{{ form.emailIds|length }}';
+
+    jQuery(document).ready(function() {
+        jQuery('#add-another-email').click(function(e) {
+            console.log(e);
+            e.preventDefault();
+            console.log(emailCount);
+
+            var emailList = jQuery('#email-fields-list');
+            console.log(emailList);
+            // grab the prototype template
+            var newWidget = emailList.attr('data-prototype');
+            console.log(newWidget);
+            // replace the "__name__" used in the id and name of the prototype
+            // with a number that's unique to your emails
+            // end name attribute looks like name="contact[emails][2]"
+            newWidget = newWidget.replace(/__name__/g, emailCount);
+            emailCount++;
+
+            // create a new list element and add it to the list
+            var newLi = jQuery('<li></li>').html(newWidget);
+            newLi.appendTo(emailList);
+        });
+    })#}    
+        </script>
     {% endblock %}
 {% endblock %}
