@@ -1,0 +1,49 @@
+UserBundle\Entity\UserGraduation:
+    type: entity
+    table: user_graduation
+    indexes:
+        fk_ix_user_id:
+            columns:
+                - user_id
+        fk_ix_graduation_id:
+            columns:
+                - graduation_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        institueName:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: institue_name
+    manyToOne:
+        graduation:
+            targetEntity: Graduation
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                graduation_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        user:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

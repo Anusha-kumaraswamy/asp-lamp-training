@@ -14,22 +14,34 @@
         {{ parent() }}
     {% endblock %}
     {% block form %}
-        {{ form_label(form.emailIds) }}
-        
-        {% for emailField in form.emailIds %}
-            {{ form_widget(emailField) }}
-            {{ form_errors(emailField) }}
-        {% endfor %}
-        <input type='button' id='addEmailId' value='+' onclick='addField(this)'
+        {{ form_start(form) }}
+    
+            {{ form_row(form.loginName) }}
+            {{ form_row(form.firstName) }}
+            {{ form_row(form.lastName) }}
+            {{ form_row(form.dateOfBirth) }}
+            {{ form_row(form.gender.name) }}
+            {{ form_row(form.bloodGroup.name) }}
+            {#{{ form_label(form.emailIds) }}
+ 
+            {% for emailField in form.emailIds %}
+                {{ form_widget(emailField) }}
+                {{ form_errors(emailField) }}
+            {% endfor %}
+            <input type='button' id='addEmailId' value='+' onclick='addField(this)'
                data-prototype="{{ form_widget(form.emailIds.vars.prototype)|e}}">
-        <input type='button' id='removeEmailId' value='-' onclick='removeField()'>
+            {{ form_row(form.register) }}
+
+        {{ form_end(form) }}#}
     {% endblock %}
+
+        
     {% block javascripts %}
         <script>
-            var emailList = document.getElementById('addEmailId');
             function addField(field)
             {
-                alert(field.data-prototype);
+                var newField = field.getAttribute('data-prototype');
+                field.previousSibling.innerHTML(newField);
             }
         {# // keep track of how many email fields have been rendered
     var emailCount = '{{ form.emailIds|length }}';

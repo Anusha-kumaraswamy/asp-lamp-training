@@ -10,14 +10,15 @@ namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use UserBundle\Entity\Form;
+use UserBundle\Entity\User;
+use UserBundle\Entity\UserAreaOfInterest;
+use UserBundle\Entity\UserContactNumber;
+use UserBundle\Entity\UserMailAddress;
+use UserBundle\Entity\UserGraduation;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Response;
+use UserBundle\Form\Type\UserType;
+use Doctrine\ORM\EntityManagerInterface;
 
 
 class UserController extends Controller
@@ -43,48 +44,28 @@ class UserController extends Controller
     /**
      * @Route("/users/new", name="user_new")
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
-        $formElements = new Form();
-        $form = $this->createFormBuilder($formElements)
-            ->add('loginName', TextType::class)
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('dateOfBirth', DateType::class)
-            ->add('bloodGroup', ChoiceType::class,  array(
-               'choices' => array(
-                    'A+' => 'A+',
-                    'B+' => 'B+',
-                    'AB+' => 'AB+',
-                )))
-            ->add('gender', ChoiceType::class,   array(
-                'choices' => array(
-                    'male' => 'male',
-                    'female' => 'female',
-                ),
-                'expanded' => true,
-                ))
-            ->add('areaOfInterest', ChoiceType::class,   array(
-                'choices' => array(
-                    'c' => 'c',
-                    'c++' => 'c++',
-                ),
-                'expanded' => true,
-                'multiple' => true
-                ))
-            ->add('emailIds', CollectionType::class, array(
-                'entry_type'   => EmailType::class,
-                'entry_options'  => array(
-                    'attr'      => array('class' => 'email-id')
-                ),
-                'allow_add' => true ,
-                ))
-            ->add('register', SubmitType::class, array('label' => 'Register'))
-            ->getForm();
-
-        return $this->render('UserBundle:User:new.html.twig', array(
+        $user = new User();
+       
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request); 
+        return $this->render('UserBundle:User:form.html.twig', array(
             'form' => $form->createView(),
         ));
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+//            $em->persist($category);
+            $em->persist($user);
+            $em->flush();
+
+            return new Response(
+                'Saved new product with id: '.$user->getId()
+                
+            );
+        }
     }
     
     /**
@@ -94,5 +75,6 @@ class UserController extends Controller
     {
         return $this->render('UserBundle:User:edit.html.twig');
     }
-    
+
 }
+

@@ -1,0 +1,39 @@
+UserBundle\Entity\UserMailAddress:
+    type: entity
+    table: user_mail_address
+    indexes:
+        fk_ix_user_id:
+            columns:
+                - user_id
+    uniqueConstraints:
+        uk_email:
+            columns:
+                - email
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        email:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

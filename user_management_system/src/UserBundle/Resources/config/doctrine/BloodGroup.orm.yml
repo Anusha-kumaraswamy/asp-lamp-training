@@ -1,0 +1,22 @@
+UserBundle\Entity\BloodGroup:
+    type: entity
+    table: blood_group
+    uniqueConstraints:
+        uk_blood_group_name:
+            columns:
+                - name
+    id:
+        id:
+            type: boolean
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
