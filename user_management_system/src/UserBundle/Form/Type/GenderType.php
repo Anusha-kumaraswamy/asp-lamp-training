@@ -14,11 +14,7 @@ class GenderType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', EntityType::class, array(
-                        'class' => 'UserBundle:Gender',
-                        'choice_label' => 'name',
-                        'expanded' => true,
-                    ));
+        $builder
     }
 
     public function configureOptions(OptionsResolver $resolver)

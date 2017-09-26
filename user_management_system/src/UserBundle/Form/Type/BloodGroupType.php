@@ -13,10 +13,7 @@ class BloodGroupType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', EntityType::class, array(
-                        'class' => 'UserBundle:BloodGroup',
-                        'choice_label' => 'name',
-                    ));
+        $builder
     }
 
     public function configureOptions(OptionsResolver $resolver)
