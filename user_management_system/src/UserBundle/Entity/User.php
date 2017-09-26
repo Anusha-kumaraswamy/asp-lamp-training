@@ -2,74 +2,76 @@
 
 namespace UserBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * User
- *
- * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="uk_user_login_name", columns={"login_name"})}, indexes={@ORM\Index(name="fk_ix_blood_group_id", columns={"blood_group_id"}), @ORM\Index(name="fk_ix_gender_id", columns={"gender_id"})})
- * @ORM\Entity
  */
 class User
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="first_name", type="string", length=45, nullable=false)
      */
     private $firstName;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="last_name", type="string", length=45, nullable=true)
      */
     private $lastName;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="date_of_birth", type="date", nullable=false)
      */
     private $dateOfBirth;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="login_name", type="string", length=45, nullable=false)
      */
     private $loginName;
 
     /**
-     * @var \BloodGroup
-     *
-     * @ORM\ManyToOne(targetEntity="BloodGroup")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="blood_group_id", referencedColumnName="id")
-     * })
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $emailIds;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $mobileNumbers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $education;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $interests;
+
+    /**
+     * @var \UserBundle\Entity\BloodGroup
      */
     private $bloodGroup;
 
     /**
-     * @var \Gender
-     *
-     * @ORM\ManyToOne(targetEntity="Gender")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="gender_id", referencedColumnName="id")
-     * })
+     * @var \UserBundle\Entity\Gender
      */
     private $gender;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->emailIds = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->mobileNumbers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->education = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->interests = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -178,6 +180,142 @@ class User
     }
 
     /**
+     * Add emailId
+     *
+     * @param \UserBundle\Entity\UserMailAddress $emailId
+     *
+     * @return User
+     */
+    public function addEmailId(\UserBundle\Entity\UserMailAddress $emailId)
+    {
+        $this->emailIds[] = $emailId;
+
+        return $this;
+    }
+
+    /**
+     * Remove emailId
+     *
+     * @param \UserBundle\Entity\UserMailAddress $emailId
+     */
+    public function removeEmailId(\UserBundle\Entity\UserMailAddress $emailId)
+    {
+        $this->emailIds->removeElement($emailId);
+    }
+
+    /**
+     * Get emailIds
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmailIds()
+    {
+        return $this->emailIds;
+    }
+
+    /**
+     * Add mobileNumber
+     *
+     * @param \UserBundle\Entity\UserContactNumber $mobileNumber
+     *
+     * @return User
+     */
+    public function addMobileNumber(\UserBundle\Entity\UserContactNumber $mobileNumber)
+    {
+        $this->mobileNumbers[] = $mobileNumber;
+
+        return $this;
+    }
+
+    /**
+     * Remove mobileNumber
+     *
+     * @param \UserBundle\Entity\UserContactNumber $mobileNumber
+     */
+    public function removeMobileNumber(\UserBundle\Entity\UserContactNumber $mobileNumber)
+    {
+        $this->mobileNumbers->removeElement($mobileNumber);
+    }
+
+    /**
+     * Get mobileNumbers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMobileNumbers()
+    {
+        return $this->mobileNumbers;
+    }
+
+    /**
+     * Add education
+     *
+     * @param \UserBundle\Entity\UserGraduation $education
+     *
+     * @return User
+     */
+    public function addEducation(\UserBundle\Entity\UserGraduation $education)
+    {
+        $this->education[] = $education;
+
+        return $this;
+    }
+
+    /**
+     * Remove education
+     *
+     * @param \UserBundle\Entity\UserGraduation $education
+     */
+    public function removeEducation(\UserBundle\Entity\UserGraduation $education)
+    {
+        $this->education->removeElement($education);
+    }
+
+    /**
+     * Get education
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEducation()
+    {
+        return $this->education;
+    }
+
+    /**
+     * Add interest
+     *
+     * @param \UserBundle\Entity\UserAreaOfInterest $interest
+     *
+     * @return User
+     */
+    public function addInterest(\UserBundle\Entity\UserAreaOfInterest $interest)
+    {
+        $this->interests[] = $interest;
+
+        return $this;
+    }
+
+    /**
+     * Remove interest
+     *
+     * @param \UserBundle\Entity\UserAreaOfInterest $interest
+     */
+    public function removeInterest(\UserBundle\Entity\UserAreaOfInterest $interest)
+    {
+        $this->interests->removeElement($interest);
+    }
+
+    /**
+     * Get interests
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInterests()
+    {
+        return $this->interests;
+    }
+
+    /**
      * Set bloodGroup
      *
      * @param \UserBundle\Entity\BloodGroup $bloodGroup
@@ -225,3 +363,4 @@ class User
         return $this->gender;
     }
 }
+

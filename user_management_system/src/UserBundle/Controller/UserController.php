@@ -50,22 +50,22 @@ class UserController extends Controller
        
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request); 
-        return $this->render('UserBundle:User:form.html.twig', array(
-            'form' => $form->createView(),
-        ));
-        
-        if ($form->isSubmitted() && $form->isValid()) {
+               
+        if ($form->isSubmitted()) {
             $user = $form->getData();
             $em = $this->getDoctrine()->getManager();
-//            $em->persist($category);
             $em->persist($user);
             $em->flush();
 
             return new Response(
-                'Saved new product with id: '.$user->getId()
+                'Saved'
                 
             );
-        }
+        } 
+        
+        return $this->render('UserBundle:User:new.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
     
     /**
@@ -77,4 +77,3 @@ class UserController extends Controller
     }
 
 }
-

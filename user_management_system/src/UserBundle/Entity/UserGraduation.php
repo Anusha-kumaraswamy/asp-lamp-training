@@ -2,52 +2,30 @@
 
 namespace UserBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UserGraduation
- *
- * @ORM\Table(name="user_graduation", indexes={@ORM\Index(name="fk_ix_user_id", columns={"user_id"}), @ORM\Index(name="fk_ix_graduation_id", columns={"graduation_id"})})
- * @ORM\Entity
  */
 class UserGraduation
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="institue_name", type="string", length=45, nullable=false)
      */
-    private $institueName;
+    private $instituteName;
 
     /**
-     * @var \Graduation
-     *
-     * @ORM\ManyToOne(targetEntity="Graduation")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="graduation_id", referencedColumnName="id")
-     * })
+     * @var \UserBundle\Entity\Graduation
      */
     private $graduation;
 
     /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     * @var \UserBundle\Entity\User
      */
     private $user;
-
 
 
     /**
@@ -61,27 +39,27 @@ class UserGraduation
     }
 
     /**
-     * Set institueName
+     * Set instituteName
      *
-     * @param string $institueName
+     * @param string $instituteName
      *
      * @return UserGraduation
      */
-    public function setInstitueName($institueName)
+    public function setInstituteName($instituteName)
     {
-        $this->institueName = $institueName;
+        $this->instituteName = $instituteName;
 
         return $this;
     }
 
     /**
-     * Get institueName
+     * Get instituteName
      *
      * @return string
      */
-    public function getInstitueName()
+    public function getInstituteName()
     {
-        return $this->institueName;
+        return $this->instituteName;
     }
 
     /**
@@ -132,3 +110,4 @@ class UserGraduation
         return $this->user;
     }
 }
+

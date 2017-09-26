@@ -18,13 +18,13 @@ UserBundle\Entity\UserGraduation:
             generator:
                 strategy: IDENTITY
     fields:
-        institueName:
+        instituteName:
             type: string
             nullable: false
             length: 45
             options:
                 fixed: false
-            column: institue_name
+            column: institute_name
     manyToOne:
         graduation:
             targetEntity: Graduation

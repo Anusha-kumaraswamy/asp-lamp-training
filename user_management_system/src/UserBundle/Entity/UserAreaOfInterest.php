@@ -2,46 +2,26 @@
 
 namespace UserBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UserAreaOfInterest
- *
- * @ORM\Table(name="user_area_of_interest", indexes={@ORM\Index(name="fk_ix_user_id", columns={"user_id"}), @ORM\Index(name="fk_ix_interest_id", columns={"area_of_interest_id"})})
- * @ORM\Entity
  */
 class UserAreaOfInterest
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var \AreaOfInterest
-     *
-     * @ORM\ManyToOne(targetEntity="AreaOfInterest")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="area_of_interest_id", referencedColumnName="id")
-     * })
+     * @var \UserBundle\Entity\AreaOfInterest
      */
     private $areaOfInterest;
 
     /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     * @var \UserBundle\Entity\User
      */
     private $user;
 
-    
 
     /**
      * Get id
@@ -101,3 +81,4 @@ class UserAreaOfInterest
         return $this->user;
     }
 }
+

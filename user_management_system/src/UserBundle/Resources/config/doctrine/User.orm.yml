@@ -68,4 +68,42 @@ UserBundle\Entity\User:
                 gender_id:
                     referencedColumnName: id
             orphanRemoval: false
+    oneToMany:
+        emailIds:
+            targetEntity: UserMailAddress
+            cascade: ["persist"]
+            fetch: EAGER
+            mappedBy: user_id
+            inversedBy: emailIds
+            joinColumns:
+                id:
+                    referencedColumnName: user_id
+            orphanRemoval: false
+        mobileNumbers:
+            targetEntity: UserContactNumber
+            cascade: ["persist"]
+            fetch: EAGER
+            mappedBy: number
+            inversedBy: null
+            joinColumns:
+                id:
+                    referencedColumnName: user_id
+            orphanRemoval: false
+        education:
+            targetEntity: UserGraduation
+            cascade: ["persist"]
+            fetch: LAZY
+            mappedBy: User
+            joinColumns:
+                graduation_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        interests:
+            targetEntity: UserAreaOfInterest
+            cascade: ["persist"]
+            fetch: LAZY
+            mappedBy: User
+            joinColumns:
+                area_of_interest_id:
+                    referencedColumnName: id
     lifecycleCallbacks: {  }
