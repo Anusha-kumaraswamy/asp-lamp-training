@@ -1,1 +1,18 @@
 {# empty Twig template #}
+<table border = "2">
+    <tr>
+        <th>UserName</th>
+        <th>FirstName</th>
+        <th>LastName</th>                
+    </tr>
+{#{% for user in entities %}#}
+    <tr>    
+        <td>{{ entities.loginName}}</td>
+        <td>{{ entities.firstName }}</td>   
+        <td>{{ entities.lastName }}</td>
+    </tr>
+     {#    {{ user.dob }}#}
+{#    {{ user.blood }}#}
+{#    {{ user.gender }}#}
+{#{% endfor %}#}
+</table>

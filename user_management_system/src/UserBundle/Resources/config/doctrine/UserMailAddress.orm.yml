@@ -31,7 +31,7 @@ UserBundle\Entity\UserMailAddress:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: null
+            inversedBy: emailIds
             joinColumns:
                 user_id:
                     referencedColumnName: id

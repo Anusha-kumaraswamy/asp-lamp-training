@@ -13,8 +13,8 @@ class UserAreaOfInterestType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('interest', EntityType::class, array(
-                'class' => 'UserBundle:UserAreaOfInterest',
+        $builder->add('areaOfInterest', EntityType::class, array(
+                'class' => 'UserBundle:AreaOfInterest',
                 'choice_label' => 'name',
                 'multiple' => false,
                 'expanded' => false,

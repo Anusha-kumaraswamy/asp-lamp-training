@@ -1,6 +1,6 @@
 <?php
 
-/* WebProfilerBundle:Collector:exception.css.twig */
+/* @WebProfiler/Collector/exception.css.twig */
 class __TwigTemplate_015caeaf3123cd3977c6cb991b209e3ac2869deaa4203756168003a4d29820c1 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_015caeaf3123cd3977c6cb991b209e3ac2869deaa4203756168003a4d29
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5ab549492ba175ee1c6b2e5244d163c2f5d1584accd466f46a4a2a8ad98ebd3c = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_5ab549492ba175ee1c6b2e5244d163c2f5d1584accd466f46a4a2a8ad98ebd3c->enter($__internal_5ab549492ba175ee1c6b2e5244d163c2f5d1584accd466f46a4a2a8ad98ebd3c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Collector:exception.css.twig"));
+        $__internal_727678daab8d7066850ef238c70e1b3a3db4a2a4b887c7c2348c1469aaa94b48 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_727678daab8d7066850ef238c70e1b3a3db4a2a4b887c7c2348c1469aaa94b48->enter($__internal_727678daab8d7066850ef238c70e1b3a3db4a2a4b887c7c2348c1469aaa94b48_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Collector/exception.css.twig"));
 
-        $__internal_9b6251ab3353ed443aeb120a7f9162066dcc331eaac73ec40c5618cf386bd624 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_9b6251ab3353ed443aeb120a7f9162066dcc331eaac73ec40c5618cf386bd624->enter($__internal_9b6251ab3353ed443aeb120a7f9162066dcc331eaac73ec40c5618cf386bd624_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Collector:exception.css.twig"));
+        $__internal_b5163f373e82993e9fc13946669db6882b721acf032828d5b681b37341e55488 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_b5163f373e82993e9fc13946669db6882b721acf032828d5b681b37341e55488->enter($__internal_b5163f373e82993e9fc13946669db6882b721acf032828d5b681b37341e55488_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Collector/exception.css.twig"));
 
         // line 1
         echo twig_include($this->env, $context, "@Twig/exception.css.twig");
@@ -59,16 +59,16 @@ class __TwigTemplate_015caeaf3123cd3977c6cb991b209e3ac2869deaa4203756168003a4d29
 }
 ";
         
-        $__internal_5ab549492ba175ee1c6b2e5244d163c2f5d1584accd466f46a4a2a8ad98ebd3c->leave($__internal_5ab549492ba175ee1c6b2e5244d163c2f5d1584accd466f46a4a2a8ad98ebd3c_prof);
+        $__internal_727678daab8d7066850ef238c70e1b3a3db4a2a4b887c7c2348c1469aaa94b48->leave($__internal_727678daab8d7066850ef238c70e1b3a3db4a2a4b887c7c2348c1469aaa94b48_prof);
 
         
-        $__internal_9b6251ab3353ed443aeb120a7f9162066dcc331eaac73ec40c5618cf386bd624->leave($__internal_9b6251ab3353ed443aeb120a7f9162066dcc331eaac73ec40c5618cf386bd624_prof);
+        $__internal_b5163f373e82993e9fc13946669db6882b721acf032828d5b681b37341e55488->leave($__internal_b5163f373e82993e9fc13946669db6882b721acf032828d5b681b37341e55488_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "WebProfilerBundle:Collector:exception.css.twig";
+        return "@WebProfiler/Collector/exception.css.twig";
     }
 
     public function isTraitable()
@@ -125,6 +125,6 @@ class __TwigTemplate_015caeaf3123cd3977c6cb991b209e3ac2869deaa4203756168003a4d29
 .exception-message-wrapper .container {
     min-height: auto;
 }
-", "WebProfilerBundle:Collector:exception.css.twig", "/var/www/html/asp-lamp-training/user_management_system/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views/Collector/exception.css.twig");
+", "@WebProfiler/Collector/exception.css.twig", "/var/www/html/asp-lamp-training/user_management_system/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views/Collector/exception.css.twig");
     }
 }

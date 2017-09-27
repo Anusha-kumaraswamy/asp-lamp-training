@@ -73,8 +73,8 @@ UserBundle\Entity\User:
             targetEntity: UserMailAddress
             cascade: ["persist"]
             fetch: EAGER
-            mappedBy: user_id
-            inversedBy: emailIds
+            mappedBy: user
+            inversedBy: null
             joinColumns:
                 id:
                     referencedColumnName: user_id
@@ -83,7 +83,7 @@ UserBundle\Entity\User:
             targetEntity: UserContactNumber
             cascade: ["persist"]
             fetch: EAGER
-            mappedBy: number
+            mappedBy: user
             inversedBy: null
             joinColumns:
                 id:
@@ -93,7 +93,7 @@ UserBundle\Entity\User:
             targetEntity: UserGraduation
             cascade: ["persist"]
             fetch: LAZY
-            mappedBy: User
+            mappedBy: user
             joinColumns:
                 graduation_id:
                     referencedColumnName: id
@@ -102,7 +102,7 @@ UserBundle\Entity\User:
             targetEntity: UserAreaOfInterest
             cascade: ["persist"]
             fetch: LAZY
-            mappedBy: User
+            mappedBy: user
             joinColumns:
                 area_of_interest_id:
                     referencedColumnName: id

@@ -13,7 +13,7 @@
     {% block table %}
         <table>
             {% for entity in entities %}
-                {% for key in entity|keys %}
+                {% for key in entities|keys %}
                     <tr>
                         <td>{{(key|split('_'))|join(' ')|capitalize}}</td>
                         <td>{{entity[key]}}</td>

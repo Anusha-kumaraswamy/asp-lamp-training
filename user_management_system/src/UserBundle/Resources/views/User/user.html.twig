@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% block stylesheets %}
+    {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% block navbar %}
+        {{ parent() }}
+    {% endblock %}
+    {% block table %}
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>{{ entities.id }}</td>
+            </tr>
+            <tr>
+                <td>Login Name</td>
+                <td>{{ entities.loginName }}</td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>{{ entities.firstName }}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{ entities.lastName }}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{ entities.gender }}</td>
+            </tr>
+            <tr>
+                <td>Date Of Birth</td>
+                <td>{{ entities.dateOfBirth|date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <td>Blood Group</td>
+                <td>{{ entities.bloodGroup }}</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>Area Of Interest</td>
+                {% for interest in entities.interests %}
+                    <td>{{ interest.areaOfInterest }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>Graduation</td>
+                {% for gradLevel in entities.education %}
+                <tr>
+                    <td>{{ gradLevel.graduation }}</td>
+                    <td>{{ gradLevel.instituteName }}</td>
+                </tr>
+                {% endfor %}
+            </tr>
+        </table>        
+        <input type="button" value="Edit" onclick="location.href='/users/edit/{{ entities.id }}'">
+    {% endblock %}
+{% endblock %}

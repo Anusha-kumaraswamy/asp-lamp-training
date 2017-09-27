@@ -1,9 +1,95 @@
 {% extends 'base.html.twig' %}
 
 {% block head %}
-    
 {% endblock %}
 
-{% block navbar %}
-    {{ parent() }}
+{% block body %}
+    {% block form %}
+        {{ form_start(form, { 'attr' : { 'novalidate' : 'novalidate' }}) }}
+    
+            {{ form_row(form.loginName) }}
+            {{ form_row(form.firstName) }}
+            {{ form_row(form.lastName) }}
+            {{ form_row(form.dateOfBirth) }}
+            {{ form_row(form.gender) }}
+            {{ form_row(form.bloodGroup) }}
+            <div>
+            {% for emailField in form.emailIds %}
+                {{ form_label(emailField)  }}
+                {{ form_widget(emailField) }}
+                {{ form_errors(emailField) }}
+            {% endfor %}
+            </div>
+            <input type='button' id='addEmailId' value='+' onclick='addField(this)'
+               data-prototype="{{ form_widget(form.emailIds.vars.prototype)|e}}">
+            
+            <div>
+            {% for number in form.mobileNumbers %}
+                {{ form_label(number)  }}
+                {{ form_widget(number) }}
+                {{ form_errors(number) }}
+            {% endfor %}
+            </div>
+            <input type='button' id='addMobileNumber' value='+' onclick='addField(this)'
+               data-prototype="{{ form_widget(form.mobileNumbers.vars.prototype)|e}}">            
+            
+            <div>
+            {% for graduationLevel in form.education %}
+                {{ form_label(graduationLevel.graduation.name)  }}
+                {{ form_widget(graduationLevel.graduation.name) }}
+                {{ form_errors(graduationLevel.graduation.name) }}
+            {% endfor %}
+            </div>
+            <input type='button' id='addGraduation' value='+' onclick='addField(this)'
+               data-prototype="{{ form_widget(form.education.vars.prototype)|e}}">  
+            
+            <div>
+            {% for areaOfInterest in form.interests %}
+                {{ form_label(areaOfInterest)  }}
+                {{ form_widget(areaOfInterest) }}
+                {{ form_errors(areaOfInterest) }}
+            {% endfor %}
+            </div>
+            <input type='button' id='addAreaOfInterest' value='+' onclick='addField(this)'
+               data-prototype="{{ form_widget(form.interests.vars.prototype)|e}}">
+            
+            {{ form_row(form.register) }}
+        {{ form_end(form) }}
+    {% endblock %}
+
+        
+    {% block javascripts %}
+        <script>
+            window.onload = displayFields;
+            function displayFields()
+            {
+                addField(document.getElementById("addEmailId"));
+                addField(document.getElementById("addMobileNumber"));
+                addField(document.getElementById("addGraduation"));
+                addField(document.getElementById("addAreaOfInterest"));
+
+            }
+            function addField(field)
+            {
+                var newField = field.getAttribute('data-prototype');
+                var prevElement = field.previousElementSibling;               
+                var newFieldId = prevElement.querySelectorAll("p").length;
+                var removeButton = document.createElement("input");
+                removeButton.setAttribute("type","button");
+                removeButton.setAttribute("onclick","removeField(this)");
+                removeButton.setAttribute("value", "-");
+                newField = newField.replace(/__name__/g,newFieldId);                
+                var newPTag = document.createElement("p");        
+                newPTag.innerHTML= newField;
+                newPTag.appendChild(removeButton);
+                prevElement.appendChild(newPTag);
+            }
+            function removeField(field)
+            {
+                if(field.parentElement.parentElement.querySelectorAll("p").length>1) {
+                    field.parentElement.remove();
+                }
+            }
+        </script>
+    {% endblock %}
 {% endblock %}

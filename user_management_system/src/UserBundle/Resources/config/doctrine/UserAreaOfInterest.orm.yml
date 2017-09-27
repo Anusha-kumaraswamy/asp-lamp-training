@@ -33,7 +33,7 @@ UserBundle\Entity\UserAreaOfInterest:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: null
+            inversedBy: interests
             joinColumns:
                 user_id:
                     referencedColumnName: id

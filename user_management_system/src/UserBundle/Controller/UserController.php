@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Form\Type\UserType;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Decorator\EntityManagerDecorator;
 
 
 class UserController extends Controller
@@ -28,17 +29,29 @@ class UserController extends Controller
      */
     public function listAction()
     {
-        $users = array (['login_name' => 'aarthi','id' =>1], ['login_name' => 'anu','id' =>2], ['login_name' => 'pavi','id' =>3]); 
-        return $this->render('UserBundle:User:userList.html.twig', array('users' => $users));
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('UserBundle:User');
+        $users = $repo->findAll();
+        if ($users == null) {
+            echo "No user Found";
+            die();
+        }
+        return $this->render('UserBundle:User:users.html.twig', array('users' => $users));
     }
     
     /**
      * @Route("/users/{id}", name="user_display", requirements={"page": "\d+"})
      */
-    public function displayAction()
+    public function displayAction($id)
     {
-        $entities = array (['login_name' => 'aarthi','first_name' =>'aarthi', 'last_name' => 'kumar']);
-        return $this->render('UserBundle:User:userProfile.html.twig', array('entities' => $entities));
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('UserBundle:User');
+        $entities = $repo->find($id);
+        if ($entities == null) {
+            echo "No user Found";
+            die();
+        }
+        return $this->render('UserBundle:User:user.html.twig', array('entities' => $entities));
     }
     
     /**
@@ -69,11 +82,31 @@ class UserController extends Controller
     }
     
     /**
-     * @Route("/users/edit/{id}", name="user_edit", requirements={"id": "\d+"})
+     * @Route("/users/{id}/edit", name="user_edit", requirements={"id": "\d+"})
      */
-    public function editAction()
+    public function editAction($id, Request $request)
     {
-        return $this->render('UserBundle:User:edit.html.twig');
+         $user = new User();
+       
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request); 
+               
+        if ($form->isSubmitted()) {
+            $user = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return new Response(
+                'Saved'
+                
+            );
+        } 
+        
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('UserBundle:User');
+        $entities = $repo->find($id);
+        return $this->render('UserBundle:User:edit.html.twig', array('entities' => $entities, 'form' => $form->createView()));
     }
 
 }

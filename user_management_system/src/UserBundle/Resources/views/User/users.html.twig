@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% block stylesheets %}
+    {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% block navbar %}
+        {{ parent() }}
+    {% endblock %}
+    {% block table %}
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>Login Name</td>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.loginName }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('bundles/user/js/createTable.js') }}">            
+        </script>
+    {% endblock %}
+{% endblock %}
+
