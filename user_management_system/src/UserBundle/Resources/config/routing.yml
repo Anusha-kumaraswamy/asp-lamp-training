@@ -6,8 +6,10 @@ user_edit:
     
 user_list:
     path: /users
-    defaults: { _controller:UserBundle:User:list }
-    
+    defaults: { _controller:UserBundle:User:list, page :1 }
+    requirements:
+        page: \d+
+     
 user_new:
     path: /users/new
     defaults: { _controller:UserBundle:User:new }

@@ -1,11 +1,5 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,6 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Form\Type\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Decorator\EntityManagerDecorator;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Adapter\ArrayAdapter;
+use Pagerfanta\Pagerfanta;
 
 
 class UserController extends Controller
@@ -27,16 +24,20 @@ class UserController extends Controller
     /**
      * @Route("/users", name="user_list")
      */
-    public function listAction()
+    public function listAction(Request $request)
     {
+        
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('UserBundle:User');
         $users = $repo->findAll();
-        if ($users == null) {
-            echo "No user Found";
-            die();
-        }
-        return $this->render('UserBundle:User:users.html.twig', array('users' => $users));
+        
+        $paginator  = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+                    $users, 
+                    $request->query->getInt('page', 1),
+                    $request->query->getInt('limit', 5)
+                );
+        return $this->render('UserBundle:User:users.html.twig', array('limitedUsers' => $result));
     }
     
     /**
@@ -59,24 +60,26 @@ class UserController extends Controller
      */
     public function newAction(Request $request)
     {
+        
         $user = new User();
-       
+        $user->addEmailId(new UserMailAddress());
+        $user->addMobileNumber(new UserContactNumber());
+        $user->addEducation(new UserGraduation());
+        $user->addInterest(new UserAreaOfInterest());
+        
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request); 
-               
-        if ($form->isSubmitted()) {
+      
+        if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
-            return new Response(
-                'Saved'
-                
-            );
+            return $this->render('UserBundle:User:users.html.twig', array('limitedUsers' => $result));
         } 
         
-        return $this->render('UserBundle:User:new.html.twig', array(
+        return $this->render('UserBundle:User:form.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -84,17 +87,18 @@ class UserController extends Controller
     /**
      * @Route("/users/{id}/edit", name="user_edit", requirements={"id": "\d+"})
      */
-    public function editAction($id, Request $request)
+    public function editAction($id, Request $request, $id)
     {
-         $user = new User();
-       
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('UserBundle:User');
+        $user = $repo->find($id);
+        
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request); 
                
         if ($form->isSubmitted()) {
             $user = $form->getData();
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
             $em->flush();
 
             return new Response(
@@ -106,7 +110,7 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('UserBundle:User');
         $entities = $repo->find($id);
-        return $this->render('UserBundle:User:edit.html.twig', array('entities' => $entities, 'form' => $form->createView()));
+        return $this->render('UserBundle:User:form.html.twig', array('entities' => $entities, 'form' => $form->createView()));
     }
 
 }

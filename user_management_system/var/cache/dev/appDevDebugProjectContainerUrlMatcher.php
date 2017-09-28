@@ -116,7 +116,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             // user_list
             if ('/users' === $pathinfo) {
-                return array (  '_controller' => 'UserBundle\\Controller\\UserController::listAction',  '_route' => 'user_list',);
+                return array (  '_controller' => 'UserBundle\\Controller\\UserController::listAction',  'page' => 1,  '_route' => 'user_list',);
             }
 
             // user_new

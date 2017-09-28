@@ -1,0 +1,40 @@
+UserBundle\Entity\User:
+    properties:
+        loginName:
+            - NotBlank:
+                message: Should Enter First Name.
+            - Regex:
+                pattern: '/\d/'
+                match:   false
+                message: Your name cannot contain a number       
+        firstName:
+            - NotBlank:
+                message: Should Enter First Name.
+            - Regex:
+                pattern: '/\d/'
+                match:   false
+                message: Your name cannot contain a number
+        lastName:
+#            - Required: false
+            - Regex:
+                pattern: '/\d/'
+                match:   false
+                message: Your name cannot contain a number
+        dateOfBirth:
+            - Date: ~
+            - NotBlank: 
+                message: Should not be blank.
+        gender:
+            - NotBlank: 
+                message: Should not be blank.
+        bloodGroup:
+            - NotBlank: 
+                message: Should not be blank.
+        interests:
+            - NotBlank: 
+                message: Should not be blank.
+        education:
+            - NotBlank: 
+                message: Should not be blank
+    constraints:
+            - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: loginName

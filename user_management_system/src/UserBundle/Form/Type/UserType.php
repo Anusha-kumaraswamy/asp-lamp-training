@@ -27,7 +27,12 @@ class UserType extends AbstractType
             ->add('loginName', TextType::class)
             ->add('firstName', TextType::class)
             ->add('lastName', TextType::class)
-            ->add('dateOfBirth', DateType::class)
+            ->add('dateOfBirth', DateType::class, array(
+                    'widget' => 'single_text',
+                    'html5' => false,
+                    'attr' => ['class' => 'js-datepicker'],
+                    'format' => 'dd/MM/yyyy',
+            ))
             ->add('gender', EntityType::class, array(
                         'class' => 'UserBundle:Gender',
                         'choice_label' => 'name',

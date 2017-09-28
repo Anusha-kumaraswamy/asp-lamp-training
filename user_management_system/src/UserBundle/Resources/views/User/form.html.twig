@@ -1,18 +1,232 @@
-{# empty Twig template #}
-<table border = "2">
-    <tr>
-        <th>UserName</th>
-        <th>FirstName</th>
-        <th>LastName</th>                
-    </tr>
-{#{% for user in entities %}#}
-    <tr>    
-        <td>{{ entities.loginName}}</td>
-        <td>{{ entities.firstName }}</td>   
-        <td>{{ entities.lastName }}</td>
-    </tr>
-     {#    {{ user.dob }}#}
-{#    {{ user.blood }}#}
-{#    {{ user.gender }}#}
-{#{% endfor %}#}
-</table>
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% block stylesheets %}
+    
+    body {
+        color : red;
+    }
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% block navbar %}
+        {{ parent() }}
+    {% endblock %}
+    {% block form %}
+        <table>
+        {{ form_start(form, { 'attr' : { 'novalidate' : 'novalidate' }}) }}
+            <tr>
+                <td>
+                {{ form_label(form.loginName)  }}
+                </td>
+                <td>
+                {{ form_widget(form.loginName) }}
+                </td>
+                <td>
+                {{ form_errors(form.loginName) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                {{ form_label(form.firstName)  }}
+                </td>
+                <td>
+                {{ form_widget(form.firstName) }}
+                </td>
+                <td>
+                {{ form_errors(form.firstName) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                {{ form_label(form.lastName)  }}
+                </td>
+                <td>
+                {{ form_widget(form.lastName) }}
+                </td>
+                <td>
+                {{ form_errors(form.lastName) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                {{ form_label(form.dateOfBirth)  }}
+                </td>
+                <td>
+                {{ form_widget(form.dateOfBirth) }}
+                </td>
+                <td>
+                {{ form_errors(form.dateOfBirth) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                {{ form_label(form.gender)  }}
+                </td>
+                <td>
+                {{ form_widget(form.gender) }}
+                </td>
+                <td>
+                {{ form_errors(form.gender) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                {{ form_label(form.bloodGroup)  }}
+                </td>
+                <td>
+                {{ form_widget(form.bloodGroup) }}
+                </td>
+                <td>
+                {{ form_errors(form.bloodGroup) }}
+                </td>
+            </tr>
+            </table>
+            
+            <div>
+                <table>
+            {% for emailField in form.emailIds %}
+                <tr>
+                <td>
+                {{ form_label(emailField)  }}
+                </td>
+                <td>
+                {{ form_widget(emailField) }}
+                </td>
+                <td>
+                {{ form_errors(emailField) }}
+                </td>
+                </tr>
+            {% endfor %}
+                </table>
+            </div>
+            
+            <input type='button' id='addEmailId' value='+' onclick='addField(this)'
+               data-prototype="{{ form_widget(form.emailIds.vars.prototype)|e}}">
+            
+            <div>
+                <table>
+            {% for number in form.mobileNumbers %}
+                <tr>
+                <td>
+                {{ form_label(number)  }}
+                </td>
+                <td>
+                {{ form_widget(number) }}
+                </td>
+                <td>
+                {{ form_errors(number) }}
+                </td>
+                </tr>
+            {% endfor %}
+                </table>
+            </div>
+            <input type='button' id='addMobileNumber' value='+' onclick='addField(this)'
+               data-prototype="{{ form_widget(form.mobileNumbers.vars.prototype)|e}}">            
+            
+            <div>
+                <table border="ridge">
+            {% for graduationLevel in form.education %}
+                <tr>
+                <td>
+                {{ form_label(graduationLevel.graduation)  }}
+                </td>
+                <td>
+                {{ form_widget(graduationLevel.graduation) }}
+                </td>
+                <td>
+                {{ form_errors(graduationLevel.graduation) }}
+                </td>
+                </tr>
+                <tr>
+                <td>
+                {{ form_label(graduationLevel.instituteName)  }}
+                </td>
+                <td>
+                {{ form_widget(graduationLevel.instituteName) }}
+                </td>
+                <td>
+                {{ form_errors(graduationLevel.instituteName) }}
+                </td>
+                </tr>
+            {% endfor %}
+            </table>
+            </div>
+            <input type='button' id='addGraduation' value='+' onclick='addField(this)'
+               data-prototype="{{ form_widget(form.education.vars.prototype)|e}}">  
+            
+            <div>
+                <table border="ridge" >
+            {% for areaOfInterest in form.interests %}
+                <tr>
+                <td>
+                {{ form_label(areaOfInterest)  }}
+                </td>
+                <td>
+                {{ form_widget(areaOfInterest) }}
+                </td>
+                <td>
+                {{ form_errors(areaOfInterest) }}
+                </td>
+                </tr>
+            {% endfor %}
+                </table>
+            </div>
+            <input type='button' id='addAreaOfInterest' value='+' onclick='addField(this)'
+               data-prototype="{{ form_widget(form.interests.vars.prototype)|e}}">
+            
+            {{ form_row(form.register) }}
+        {{ form_end(form) }}
+        
+    {% endblock %}
+        
+    {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">       
+        </script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+        </script>
+        <script>
+            $(document).ready(function() {
+            var today = new Date();
+            var currentYear = today.getFullYear();
+            //var rangeLimit = currentYear-18;
+            $(".js-datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1980:'+currentYear,
+            });
+        </script>    
+        <script>
+            {#window.onload = displayFields;
+            function displayFields()
+            {
+                addField(document.getElementById("addEmailId"));
+                addField(document.getElementById("addMobileNumber"));
+                addField(document.getElementById("addGraduation"));
+                addField(document.getElementById("addAreaOfInterest"));
+            }#}
+            function addField(field)
+            {
+                var newField = field.getAttribute('data-prototype');
+                var prevElement = field.previousElementSibling;               
+                var newFieldId = prevElement.querySelectorAll("p").length;
+                var removeButton = document.createElement("input");
+                removeButton.setAttribute("type","button");
+                removeButton.setAttribute("onclick","removeField(this)");
+                removeButton.setAttribute("value", "-");
+                newField = newField.replace(/__name__/g,newFieldId);                
+                var newPTag = document.createElement("p");        
+                newPTag.innerHTML= newField;
+                newPTag.appendChild(removeButton);
+                prevElement.appendChild(newPTag);
+            }
+            function removeField(field)
+            {
+                if(field.parentElement.parentElement.querySelectorAll("p").length>1) {
+                    field.parentElement.remove();
+                }
+            }
+        </script>   
+    {% endblock %}
+{% endblock %}

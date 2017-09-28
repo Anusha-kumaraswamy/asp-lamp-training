@@ -7,26 +7,25 @@
 {% endblock %}
 
 {% block body %}
-    {% block navbar %}
-        {{ parent() }}
-    {% endblock %}
     {% block table %}
+        <input type="button" value="Add User" onclick="location.href='/users/new'">
         <table>
             <tr>
-                <td>Id</td>
-                <td>Login Name</td>
+                <th>Id</th>
+                <th>Login Name</th>
+                <th>View</th>
             </tr>
-            {% for user in users %}
+            {% for user in limitedUsers %}
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.loginName }}</td>
+                <td><input type="button" onclick="location.href='/users/{{ user.id }}'"></td>
             </tr>
             {% endfor %}
         </table>
-    {% endblock %}
-    {% block javascripts %}
-        <script src="{{ asset('bundles/user/js/createTable.js') }}">            
-        </script>
+        <div class="navigation">
+            {{ knp_pagination_render(limitedUsers) }}
+        </div>
     {% endblock %}
 {% endblock %}
 
