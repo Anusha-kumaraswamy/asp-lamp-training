@@ -211,9 +211,9 @@
             }
             function removeField(field)
             {
-                if(field.parentElement.parentElement.querySelectorAll("p").length>1) {
+                {#if(field.parentElement.parentElement.querySelectorAll("p").length>1) {#}
                     field.parentElement.remove();
-                }
+                {#}#}
             }
         </script>   
     {% endblock %}

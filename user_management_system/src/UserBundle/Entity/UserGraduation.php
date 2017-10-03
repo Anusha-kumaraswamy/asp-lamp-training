@@ -110,3 +110,4 @@ class UserGraduation
         return $this->user;
     }
 }
+

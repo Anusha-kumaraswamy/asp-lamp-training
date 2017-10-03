@@ -81,3 +81,4 @@ class UserMailAddress
         return $this->user;
     }
 }
+

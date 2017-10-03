@@ -16,7 +16,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class UserType extends AbstractType
@@ -49,7 +48,9 @@ class UserType extends AbstractType
             ),
                 'allow_add' => true,
                 'allow_delete' => true,
-                'prototype' => true
+                'prototype' => true,
+                'label' => false,
+                'by_reference' => false
              ))
             ->add('mobileNumbers', CollectionType::class, array(
                 'entry_type'   => UserContactNumberType::class,
@@ -84,7 +85,7 @@ class UserType extends AbstractType
      public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => User::class,
+            'data_class' => User::class
         ));
     }
 }

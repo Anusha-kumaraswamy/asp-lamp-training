@@ -210,15 +210,4 @@ class Gender extends \UserBundle\Entity\Gender implements \Doctrine\ORM\Proxy\Pr
         return parent::getName();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function __toString()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
-
-        return parent::__toString();
-    }
-
 }

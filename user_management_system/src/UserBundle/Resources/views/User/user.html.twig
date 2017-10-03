@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td>Gender</td>
-                <td>{{ entities.gender }}</td>
+                <td>{{ entities.gender.name }}</td>
             </tr>
             <tr>
                 <td>Date Of Birth</td>
@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td>Blood Group</td>
-                <td>{{ entities.bloodGroup }}</td>
+                <td>{{ entities.bloodGroup.name }}</td>
             </tr>
         </table>
         <br>
@@ -75,7 +75,7 @@
             
                 {% for interest in entities.interests %}
                     <tr>
-                    <td>{{ interest.areaOfInterest }}</td>
+                    <td>{{ interest.areaOfInterest.name }}</td>
                     </tr>
                 {% endfor %}
             
@@ -87,7 +87,7 @@
                 <td>Institute Name</td>
                 {% for gradLevel in entities.education %}
                 <tr>
-                    <td>{{ gradLevel.graduation }}</td>
+                    <td>{{ gradLevel.graduation.name }}</td>
                     <td>{{ gradLevel.instituteName }}</td>
                 </tr>
                 {% endfor %}

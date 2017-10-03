@@ -189,7 +189,9 @@ class User
     public function addEmailId(\UserBundle\Entity\UserMailAddress $emailId)
     {
         $this->emailIds[] = $emailId;
+
         $emailId->setUser($this);
+        
         return $this;
     }
 
@@ -223,7 +225,9 @@ class User
     public function addMobileNumber(\UserBundle\Entity\UserContactNumber $mobileNumber)
     {
         $this->mobileNumbers[] = $mobileNumber;
-        $mobileNumber->setUser($this);
+
+        $mobileNumber->setUser($this);     
+        
         return $this;
     }
 
@@ -257,7 +261,9 @@ class User
     public function addEducation(\UserBundle\Entity\UserGraduation $education)
     {
         $this->education[] = $education;
+
         $education->setUser($this);
+
         return $this;
     }
 
@@ -291,7 +297,9 @@ class User
     public function addInterest(\UserBundle\Entity\UserAreaOfInterest $interest)
     {
         $this->interests[] = $interest;
+
         $interest->setUser($this);
+        
         return $this;
     }
 
@@ -363,3 +371,4 @@ class User
         return $this->gender;
     }
 }
+

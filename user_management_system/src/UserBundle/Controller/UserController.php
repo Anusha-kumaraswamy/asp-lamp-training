@@ -90,7 +90,7 @@ class UserController extends Controller
         $form->handleRequest($request); 
                
         if ($form->isSubmitted() && $form->isValid()) {
-            $entities = $form->getData();
+            $entities = $form->getData();          
             $em->flush();
 
             return $this->redirectToRoute('user_list');

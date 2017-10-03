@@ -19,7 +19,7 @@ class UserContactNumberType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => UserContactNumber::class,
+            'data_class' => UserContactNumber::class
         ));
     }
 }

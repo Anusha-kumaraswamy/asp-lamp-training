@@ -81,3 +81,4 @@ class UserAreaOfInterest
         return $this->user;
     }
 }
+

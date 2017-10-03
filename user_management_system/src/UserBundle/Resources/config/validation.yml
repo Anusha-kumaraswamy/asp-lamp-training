@@ -38,6 +38,9 @@ UserBundle\Entity\User:
         education:
             - NotBlank: 
                 message: Should not be blank
+        mobileNumbers:
+            - valid: ~
+            - NotBlank: ~
     constraints:
             - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: loginName
 
@@ -47,3 +50,14 @@ UserBundle\Entity\UserMailAddress:
     properties:
         email:
             - Email: ~
+        
+UserBundle\Entity\UserContactNumber:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: number
+    properties:
+        number:
+            - NotBlank:      
+                message: Should not be blank
+            - Regex:
+                pattern: "/^[9|8|7][0-9]{9}$/"
+                message: Enter a valid mobile number

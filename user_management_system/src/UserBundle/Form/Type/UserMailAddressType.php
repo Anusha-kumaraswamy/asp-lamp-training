@@ -19,8 +19,7 @@ class UserMailAddressType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => UserMailAddress::class,
-            'by_reference' => false
+            'data_class' => UserMailAddress::class
         ));
     }
 }
