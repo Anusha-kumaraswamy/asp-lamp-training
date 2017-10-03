@@ -2,7 +2,7 @@ UserBundle\Entity\User:
     properties:
         loginName:
             - NotBlank:
-                message: Should Enter First Name.
+                message: Enter a first name.
             - Regex:
                 pattern: '/\d/'
                 match:   false
@@ -15,7 +15,6 @@ UserBundle\Entity\User:
                 match:   false
                 message: Your name cannot contain a number
         lastName:
-#            - Required: false
             - Regex:
                 pattern: '/\d/'
                 match:   false
@@ -30,6 +29,9 @@ UserBundle\Entity\User:
         bloodGroup:
             - NotBlank: 
                 message: Should not be blank.
+        emailIds:
+            - valid: ~
+            - NotBlank: ~
         interests:
             - NotBlank: 
                 message: Should not be blank.
@@ -38,3 +40,10 @@ UserBundle\Entity\User:
                 message: Should not be blank
     constraints:
             - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: loginName
+
+UserBundle\Entity\UserMailAddress:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+    properties:
+        email:
+            - Email: ~

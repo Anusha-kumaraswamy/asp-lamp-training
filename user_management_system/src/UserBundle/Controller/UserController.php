@@ -10,14 +10,7 @@ use UserBundle\Entity\UserContactNumber;
 use UserBundle\Entity\UserMailAddress;
 use UserBundle\Entity\UserGraduation;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use UserBundle\Form\Type\UserType;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Decorator\EntityManagerDecorator;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Adapter\ArrayAdapter;
-use Pagerfanta\Pagerfanta;
-
 
 class UserController extends Controller
 {
@@ -76,7 +69,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->render('UserBundle:User:users.html.twig', array('limitedUsers' => $result));
+            return $this->redirectToRoute('user_list');
         } 
         
         return $this->render('UserBundle:User:form.html.twig', array(
@@ -87,29 +80,22 @@ class UserController extends Controller
     /**
      * @Route("/users/{id}/edit", name="user_edit", requirements={"id": "\d+"})
      */
-    public function editAction($id, Request $request, $id)
+    public function editAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('UserBundle:User');
-        $user = $repo->find($id);
+        $entities = $repo->find($id);
         
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserType::class, $entities);
         $form->handleRequest($request); 
                
-        if ($form->isSubmitted()) {
-            $user = $form->getData();
-            $em = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entities = $form->getData();
             $em->flush();
 
-            return new Response(
-                'Saved'
-                
-            );
+            return $this->redirectToRoute('user_list');
         } 
         
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository('UserBundle:User');
-        $entities = $repo->find($id);
         return $this->render('UserBundle:User:form.html.twig', array('entities' => $entities, 'form' => $form->createView()));
     }
 

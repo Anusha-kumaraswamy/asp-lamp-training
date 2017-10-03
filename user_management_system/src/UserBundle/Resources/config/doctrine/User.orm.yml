@@ -72,22 +72,22 @@ UserBundle\Entity\User:
         emailIds:
             targetEntity: UserMailAddress
             cascade: ["persist"]
-            fetch: EAGER
+            fetch: LAZY
             mappedBy: user
             inversedBy: null
-            joinColumns:
-                id:
-                    referencedColumnName: user_id
+            joinColumns: 
+                email_id:
+                    referencedColumnName: id
             orphanRemoval: false
         mobileNumbers:
             targetEntity: UserContactNumber
             cascade: ["persist"]
-            fetch: EAGER
+            fetch: LAZY
             mappedBy: user
             inversedBy: null
             joinColumns:
-                id:
-                    referencedColumnName: user_id
+                mobile_number_id:
+                    referencedColumnName: id
             orphanRemoval: false
         education:
             targetEntity: UserGraduation

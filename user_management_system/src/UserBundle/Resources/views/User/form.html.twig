@@ -187,25 +187,13 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
         </script>
         <script>
-            $(document).ready(function() {
-            var today = new Date();
-            var currentYear = today.getFullYear();
-            //var rangeLimit = currentYear-18;
-            $(".js-datepicker").datepicker({
-                changeMonth: true,
-                changeYear: true,
-                yearRange: '1980:'+currentYear,
+            $(document).ready(function() {      
+                $('.js-datepicker').datepicker({
+                    format: 'yyyy-mm-dd'
+                });
             });
         </script>    
         <script>
-            {#window.onload = displayFields;
-            function displayFields()
-            {
-                addField(document.getElementById("addEmailId"));
-                addField(document.getElementById("addMobileNumber"));
-                addField(document.getElementById("addGraduation"));
-                addField(document.getElementById("addAreaOfInterest"));
-            }#}
             function addField(field)
             {
                 var newField = field.getAttribute('data-prototype');

@@ -45,8 +45,8 @@ class UserType extends AbstractType
             ->add('emailIds', CollectionType::class, array(
                 'entry_type'   => UserMailAddressType::class,
                 'entry_options'  => array(
-                    'attr'      => array('class' => 'emailId'),
-                ),
+                'attr'      => array('class' => 'emailId')
+            ),
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true

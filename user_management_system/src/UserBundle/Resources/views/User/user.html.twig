@@ -11,7 +11,7 @@
         {{ parent() }}
     {% endblock %}
     {% block table %}
-        <table>
+        <table border="ridge">
             <tr>
                 <td>Id</td>
                 <td>{{ entities.id }}</td>
@@ -41,17 +41,50 @@
                 <td>{{ entities.bloodGroup }}</td>
             </tr>
         </table>
-        <table>
+        <br>
+        <table border="ridge">
+            <tr>
+                <td>Email Address</td>
+            </tr>
+            
+                {% for emails in entities.emailIds %}
+                    <tr>
+                    <td>{{ emails.email }}</td>
+                    </tr>
+                {% endfor %}
+            
+        </table>
+        <br>
+        <table border="ridge">
+            <tr>
+                <td>Contact Numbers</td>
+            </tr>
+            
+                {% for numbers in entities.mobileNumbers %}
+                    <tr>
+                    <td>{{ numbers.number }}</td>
+                    </tr>
+                {% endfor %}
+            
+        </table>
+        <br>
+        <table border="ridge">
             <tr>
                 <td>Area Of Interest</td>
-                {% for interest in entities.interests %}
-                    <td>{{ interest.areaOfInterest }}</td>
-                {% endfor %}
             </tr>
+            
+                {% for interest in entities.interests %}
+                    <tr>
+                    <td>{{ interest.areaOfInterest }}</td>
+                    </tr>
+                {% endfor %}
+            
         </table>
-        <table>
+        <br>
+        <table border="ridge">
             <tr>
                 <td>Graduation</td>
+                <td>Institute Name</td>
                 {% for gradLevel in entities.education %}
                 <tr>
                     <td>{{ gradLevel.graduation }}</td>
@@ -60,6 +93,7 @@
                 {% endfor %}
             </tr>
         </table>        
+        <br>
         <input type="button" value="Edit" onclick="location.href='/users/edit/{{ entities.id }}'">
     {% endblock %}
 {% endblock %}
