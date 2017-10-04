@@ -73,6 +73,8 @@ class UserGraduation
     {
         $this->graduation = $graduation;
 
+       $graduation->setUser($this);        
+        
         return $this;
     }
 

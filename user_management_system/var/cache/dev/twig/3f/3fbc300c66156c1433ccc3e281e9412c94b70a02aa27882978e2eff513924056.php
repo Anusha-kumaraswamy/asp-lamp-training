@@ -1,6 +1,6 @@
 <?php
 
-/* @WebProfiler/Profiler/profiler.css.twig */
+/* WebProfilerBundle:Profiler:profiler.css.twig */
 class __TwigTemplate_aac7a7af91315e6873ef353d440d3d3806bfd0c707005e45b2c46e211e172932 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_aac7a7af91315e6873ef353d440d3d3806bfd0c707005e45b2c46e211e1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0480e5347115cf28271dece4100cecdd2dbcd88239a9c57d2ceecb38f29671d1 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_0480e5347115cf28271dece4100cecdd2dbcd88239a9c57d2ceecb38f29671d1->enter($__internal_0480e5347115cf28271dece4100cecdd2dbcd88239a9c57d2ceecb38f29671d1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/profiler.css.twig"));
+        $__internal_4aac6e886204b3981d35e3ee3fffe456bf0d619a9c6342fbbf4c703356e60426 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_4aac6e886204b3981d35e3ee3fffe456bf0d619a9c6342fbbf4c703356e60426->enter($__internal_4aac6e886204b3981d35e3ee3fffe456bf0d619a9c6342fbbf4c703356e60426_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Profiler:profiler.css.twig"));
 
-        $__internal_2227a6a90b88960c3028e91a47d16ff90d946cbd1d233638cf61317ec7bdb508 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_2227a6a90b88960c3028e91a47d16ff90d946cbd1d233638cf61317ec7bdb508->enter($__internal_2227a6a90b88960c3028e91a47d16ff90d946cbd1d233638cf61317ec7bdb508_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/profiler.css.twig"));
+        $__internal_0955494e4f60e1d8df9d5b55552a5ac49e840266e6dee9f4eb107c7a40dec2e0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_0955494e4f60e1d8df9d5b55552a5ac49e840266e6dee9f4eb107c7a40dec2e0->enter($__internal_0955494e4f60e1d8df9d5b55552a5ac49e840266e6dee9f4eb107c7a40dec2e0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "WebProfilerBundle:Profiler:profiler.css.twig"));
 
         // line 3
         $context["mixins"] = array("break_long_words" => "-ms-word-break: break-all; word-break: break-all; word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;", "monospace_font" => "font-family: monospace; font-size: 13px; font-size-adjust: 0.5;", "sans_serif_font" => "font-family: Helvetica, Arial, sans-serif;", "subtle_border_and_shadow" => "background: #FFF; border: 1px solid #E0E0E0; box-shadow: 0px 0px 1px rgba(128, 128, 128, .2);");
@@ -1112,16 +1112,16 @@ tr.status-warning td {
 }
 ";
         
-        $__internal_0480e5347115cf28271dece4100cecdd2dbcd88239a9c57d2ceecb38f29671d1->leave($__internal_0480e5347115cf28271dece4100cecdd2dbcd88239a9c57d2ceecb38f29671d1_prof);
+        $__internal_4aac6e886204b3981d35e3ee3fffe456bf0d619a9c6342fbbf4c703356e60426->leave($__internal_4aac6e886204b3981d35e3ee3fffe456bf0d619a9c6342fbbf4c703356e60426_prof);
 
         
-        $__internal_2227a6a90b88960c3028e91a47d16ff90d946cbd1d233638cf61317ec7bdb508->leave($__internal_2227a6a90b88960c3028e91a47d16ff90d946cbd1d233638cf61317ec7bdb508_prof);
+        $__internal_0955494e4f60e1d8df9d5b55552a5ac49e840266e6dee9f4eb107c7a40dec2e0->leave($__internal_0955494e4f60e1d8df9d5b55552a5ac49e840266e6dee9f4eb107c7a40dec2e0_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@WebProfiler/Profiler/profiler.css.twig";
+        return "WebProfilerBundle:Profiler:profiler.css.twig";
     }
 
     public function isTraitable()
@@ -2161,6 +2161,6 @@ table.logs .metadata {
         margin-left: 2px;
     }
 }
-", "@WebProfiler/Profiler/profiler.css.twig", "/var/www/html/asp-lamp-training/user_management_system/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views/Profiler/profiler.css.twig");
+", "WebProfilerBundle:Profiler:profiler.css.twig", "/var/www/html/asp-lamp-training/user_management_system/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views/Profiler/profiler.css.twig");
     }
 }

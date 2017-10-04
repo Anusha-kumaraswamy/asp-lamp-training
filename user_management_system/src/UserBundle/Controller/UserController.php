@@ -57,8 +57,8 @@ class UserController extends Controller
         $user = new User();
         $user->addEmailId(new UserMailAddress());
         $user->addMobileNumber(new UserContactNumber());
-        $user->addEducation(new UserGraduation());
-        $user->addInterest(new UserAreaOfInterest());
+//        $user->addEducation(new UserGraduation());
+//        $user->addInterest(new UserAreaOfInterest());
         
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request); 

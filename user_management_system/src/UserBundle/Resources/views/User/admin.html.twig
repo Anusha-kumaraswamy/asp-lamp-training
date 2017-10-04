@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% block stylesheets %}
+    
+    body {
+        color : red;
+    }
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% block navbar %}
+        {{ parent() }}
+    {% endblock %}
+    {% block form %}
+        <table border="ridge">
+            <tr>
+                <th colspan="2">{{ "Gender" }}</th>
+            </tr>
+        {% for gender in genders %}
+            <tr>
+                <td>{{ gender.name }}</td>
+                <td><input type="button" value="X" onclick="location.href='/admin/remove/gender/{{ gender.id }}';"></td>
+            </tr>
+        {% endfor %}
+            <tr>
+                {{ form_start(genderForm, { 'attr' : { 'novalidate' : 'novalidate' } } ) }}
+                    <th>{{ form_errors(genderForm.name) }}{{ form_widget(genderForm.name) }}</th>
+                    <th>{{ form_row(genderForm.add) }}</th>
+                {{ form_end(genderForm) }}
+            </tr>
+        </table>
+        <table border="ridge">
+            <tr>
+                <th colspan="2">{{ "Blood Group" }}</th>
+            </tr>
+        {% for bloodGroup in bloodGroups %}
+            <tr>
+                <td>{{ bloodGroup.name }}</td>
+                <td><input type="button" value="X" onclick="location.href='/admin/remove/bloodGroup/{{ bloodGroup.id }}';"></td>
+            </tr>
+        {% endfor %}
+            <tr>
+                {{ form_start(bloodGroupForm, { 'attr' : { 'novalidate' : 'novalidate' } } ) }}
+                    <th>{{ form_errors(bloodGroupForm.name) }} {{ form_widget(bloodGroupForm.name) }} </th>
+                    <th>{{ form_row(bloodGroupForm.add) }}</th>
+                {{ form_end(bloodGroupForm) }}
+            </tr>
+        </table>
+        <table border="ridge">
+            <tr>
+                <th colspan="2">{{ "Graduation Levels" }}</th>
+            </tr>
+        {% for graduation in graduationLevels %}
+            <tr>
+                <td>{{ graduation.name }}</td>
+                <td><input type="button" value="X" onclick="location.href='/admin/remove/graduation/{{ graduation.id }}';"></td>
+            </tr>
+        {% endfor %}
+            <tr>
+                {{ form_start(graduationForm, { 'attr' : { 'novalidate' : 'novalidate' } } )}}
+                    <th> {{ form_errors(graduationForm.name) }}{{ form_widget(graduationForm.name) }} </th>
+                    <th>{{ form_row(graduationForm.add) }}</th>
+                {{ form_end(graduationForm) }}
+            </tr>
+        </table>
+        <table border="ridge">
+            <tr>
+                <th colspan="2">{{ "Area Of Interest" }}</th>
+            </tr>
+        {% for interest in interests %}
+            <tr>
+                <td>{{ interest.name }}</td>
+                <td><input type="button" value="X" onclick="location.href='/admin/remove/areaOfInterest/{{ interest.id }}';"></td>
+            </tr>
+        {% endfor %}
+            <tr>
+                {{ form_start(interestForm, { 'attr' : { 'novalidate' : 'novalidate' } } ) }}
+                    <th> {{ form_errors(interestForm.name) }}{{ form_widget(interestForm.name) }} </th>
+                    <th>{{ form_row(interestForm.add) }}</th>
+                {{ form_end(interestForm) }}
+            </tr>
+        </table>
+    {% endblock %}
+{% endblock %}

@@ -1,3 +1,35 @@
+UserBundle\Entity\Gender:
+    properties:
+        name:
+            - NotBlank:
+                message: Enter a gender
+    constraints:
+            - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+
+UserBundle\Entity\BloodGroup:
+    properties:
+        name:
+            - NotBlank:
+                message: Enter a blood group
+    constraints:
+            - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+
+UserBundle\Entity\Graduation:
+    properties:
+        name:
+            - NotBlank:
+                message: Enter a graduation type
+    constraints:
+            - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+
+UserBundle\Entity\AreaOfInterest:
+    properties:
+        name:
+            - NotBlank:
+                message: Enter an area of interest
+    constraints:
+            - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+
 UserBundle\Entity\User:
     properties:
         loginName:

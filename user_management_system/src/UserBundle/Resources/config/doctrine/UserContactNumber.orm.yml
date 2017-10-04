@@ -30,7 +30,7 @@ UserBundle\Entity\UserContactNumber:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: mobileNumbers
+            inversedBy: null
             joinColumns:
                 user_id:
                     referencedColumnName: id

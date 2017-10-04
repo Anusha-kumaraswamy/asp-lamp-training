@@ -15,7 +15,7 @@
     {% endblock %}
     {% block form %}
         <table>
-        {{ form_start(form, { 'attr' : { 'novalidate' : 'novalidate' }}) }}
+        {{ form_start(form, { 'attr' : { 'novalidate' : 'novalidate' , 'id' : 'user'} }) }}
             <tr>
                 <td>
                 {{ form_label(form.loginName)  }}
@@ -211,9 +211,18 @@
             }
             function removeField(field)
             {
-                {#if(field.parentElement.parentElement.querySelectorAll("p").length>1) {#}
-                    field.parentElement.remove();
-                {#}#}
+                field.parentElement.remove();
+            }
+            document.getElementById("user").addEventListener("submit", validate());
+            function validate() {
+                var fields = document.querySelectorAll("input, select");
+                for (var iteration = 0;iteration < fields.length; iteration++) {
+                    if(fields[iteration].hasAttribute("data-required")) {
+                        if(fields[iteration].value == "") {
+                            alert(fields[iteration].name);
+                        }
+                    }
+                }
             }
         </script>   
     {% endblock %}

@@ -8,7 +8,7 @@ namespace UserBundle\Entity;
 class Gender
 {
     /**
-     * @var boolean
+     * @var integer
      */
     private $id;
 
@@ -21,7 +21,7 @@ class Gender
     /**
      * Get id
      *
-     * @return boolean
+     * @return integer
      */
     public function getId()
     {

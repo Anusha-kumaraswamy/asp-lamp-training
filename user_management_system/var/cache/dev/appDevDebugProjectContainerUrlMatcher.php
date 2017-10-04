@@ -131,6 +131,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        elseif (0 === strpos($pathinfo, '/admin')) {
+            // admin
+            if ('/admin' === $pathinfo) {
+                return array (  '_controller' => 'UserBundle\\Controller\\AdminController::manageAction',  '_route' => 'admin',);
+            }
+
+            // admin_remove
+            if (0 === strpos($pathinfo, '/admin/remove') && preg_match('#^/admin/remove/(?P<tableName>[^/]++)/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_remove')), array (  '_controller' => 'UserBundle\\Controller\\AdminController::removeAction',));
+            }
+
+        }
+
         // homepage
         if ('' === $trimmedPathinfo) {
             if (substr($pathinfo, -1) !== '/') {

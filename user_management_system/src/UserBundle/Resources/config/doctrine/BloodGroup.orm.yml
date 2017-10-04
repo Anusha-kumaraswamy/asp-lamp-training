@@ -7,8 +7,10 @@ UserBundle\Entity\BloodGroup:
                 - name
     id:
         id:
-            type: boolean
+            type: integer
             nullable: false
+            options:
+                unsigned: false
             id: true
             generator:
                 strategy: IDENTITY

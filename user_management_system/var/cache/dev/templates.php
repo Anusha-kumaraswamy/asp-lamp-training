@@ -83,6 +83,7 @@
   'DoctrineBundle:Collector:explain.html.twig' => __DIR__.'/../../../vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig',
   'DoctrineBundle:Collector:db.html.twig' => __DIR__.'/../../../vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig',
   'UserBundle:User:userList.html.twig' => __DIR__.'/../../../src/UserBundle/Resources/views/User/userList.html.twig',
+  'UserBundle:User:admin.html.twig' => __DIR__.'/../../../src/UserBundle/Resources/views/User/admin.html.twig',
   'UserBundle:User:base.html.twig' => __DIR__.'/../../../src/UserBundle/Resources/views/User/base.html.twig',
   'UserBundle:User:users.html.twig' => __DIR__.'/../../../src/UserBundle/Resources/views/User/users.html.twig',
   'UserBundle:User:userProfile.html.twig' => __DIR__.'/../../../src/UserBundle/Resources/views/User/userProfile.html.twig',

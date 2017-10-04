@@ -1,6 +1,6 @@
 <?php
 
-/* @KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig */
+/* KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig */
 class __TwigTemplate_f69f61e7f5f8fb7c4d00bbfa6521d1d5a08df28b7f2583b551a6e98459f92e0f extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_f69f61e7f5f8fb7c4d00bbfa6521d1d5a08df28b7f2583b551a6e98459f
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_04ec6b57c8900b1d9fbaa27dbc92beee755374ae9b1f6ddf731a151315aec415 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_04ec6b57c8900b1d9fbaa27dbc92beee755374ae9b1f6ddf731a151315aec415->enter($__internal_04ec6b57c8900b1d9fbaa27dbc92beee755374ae9b1f6ddf731a151315aec415_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig"));
+        $__internal_7b1c8af9562df872f36bc9558fe4ea25526cc69989b4211fe56f3d4bd3ca0eee = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_7b1c8af9562df872f36bc9558fe4ea25526cc69989b4211fe56f3d4bd3ca0eee->enter($__internal_7b1c8af9562df872f36bc9558fe4ea25526cc69989b4211fe56f3d4bd3ca0eee_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig"));
 
-        $__internal_1ec8a9bb4afd7750e0725a8a8bccb086344eb6d2ce86a95361011d0910ac3f7f = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_1ec8a9bb4afd7750e0725a8a8bccb086344eb6d2ce86a95361011d0910ac3f7f->enter($__internal_1ec8a9bb4afd7750e0725a8a8bccb086344eb6d2ce86a95361011d0910ac3f7f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig"));
+        $__internal_a0adba720242c18358cf5bc314b5b4e9c363a4af6401149f1e8fb91eb1f93270 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a0adba720242c18358cf5bc314b5b4e9c363a4af6401149f1e8fb91eb1f93270->enter($__internal_a0adba720242c18358cf5bc314b5b4e9c363a4af6401149f1e8fb91eb1f93270_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig"));
 
         // line 16
         echo "
@@ -195,16 +195,16 @@ class __TwigTemplate_f69f61e7f5f8fb7c4d00bbfa6521d1d5a08df28b7f2583b551a6e98459f
 ";
         }
         
-        $__internal_04ec6b57c8900b1d9fbaa27dbc92beee755374ae9b1f6ddf731a151315aec415->leave($__internal_04ec6b57c8900b1d9fbaa27dbc92beee755374ae9b1f6ddf731a151315aec415_prof);
+        $__internal_7b1c8af9562df872f36bc9558fe4ea25526cc69989b4211fe56f3d4bd3ca0eee->leave($__internal_7b1c8af9562df872f36bc9558fe4ea25526cc69989b4211fe56f3d4bd3ca0eee_prof);
 
         
-        $__internal_1ec8a9bb4afd7750e0725a8a8bccb086344eb6d2ce86a95361011d0910ac3f7f->leave($__internal_1ec8a9bb4afd7750e0725a8a8bccb086344eb6d2ce86a95361011d0910ac3f7f_prof);
+        $__internal_a0adba720242c18358cf5bc314b5b4e9c363a4af6401149f1e8fb91eb1f93270->leave($__internal_a0adba720242c18358cf5bc314b5b4e9c363a4af6401149f1e8fb91eb1f93270_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig";
+        return "KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig";
     }
 
     public function isTraitable()
@@ -312,6 +312,6 @@ class __TwigTemplate_f69f61e7f5f8fb7c4d00bbfa6521d1d5a08df28b7f2583b551a6e98459f
     {% endif %}
     </ul>
 {% endif %}
-", "@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig", "/var/www/html/asp-lamp-training/user_management_system/vendor/knplabs/knp-paginator-bundle/Resources/views/Pagination/twitter_bootstrap_v3_pagination.html.twig");
+", "KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig", "/var/www/html/asp-lamp-training/user_management_system/vendor/knplabs/knp-paginator-bundle/Resources/views/Pagination/twitter_bootstrap_v3_pagination.html.twig");
     }
 }

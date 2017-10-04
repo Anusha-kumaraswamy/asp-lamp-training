@@ -44,6 +44,8 @@ class UserContactNumber
     {
         $this->number = $number;
 
+        $number->setUser($this);        
+        
         return $this;
     }
 

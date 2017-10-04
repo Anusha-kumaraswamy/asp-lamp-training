@@ -19,3 +19,13 @@ user_display:
     defaults: { _controller:UserBundle:User:display }
     requirements:
         id: '\d+'
+        
+admin:
+    path: /admin
+    defaults: { _controller:UserBundle:Admin:manage }
+    
+admin_remove:
+    path: /admin/remove/{tableName}/{id}
+    defaults: { _controller:UserBundle:Admin:remove }
+    requirements:
+        id: '\d+'

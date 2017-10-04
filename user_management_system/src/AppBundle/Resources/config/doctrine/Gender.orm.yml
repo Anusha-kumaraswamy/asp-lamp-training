@@ -1,0 +1,22 @@
+UserBundle\Entity\Gender:
+    type: entity
+    table: gender
+    uniqueConstraints:
+        uk_gender_name:
+            columns:
+                - name
+    id:
+        id:
+            type: boolean
+            nullable: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

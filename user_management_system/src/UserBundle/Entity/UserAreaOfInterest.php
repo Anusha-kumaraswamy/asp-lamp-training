@@ -44,6 +44,8 @@ class UserAreaOfInterest
     {
         $this->areaOfInterest = $areaOfInterest;
 
+        $areaOfInterest->setUser($this);        
+        
         return $this;
     }
 

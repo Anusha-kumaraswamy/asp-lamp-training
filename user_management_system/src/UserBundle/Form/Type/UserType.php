@@ -1,11 +1,5 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace UserBundle\Form\Type;
 
 use UserBundle\Entity\User;
@@ -23,39 +17,40 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('loginName', TextType::class)
-            ->add('firstName', TextType::class)
+            ->add('loginName', TextType::class, array('attr' => ['data-required' => 'true']))
+            ->add('firstName', TextType::class, array('attr' => ['data-required' => 'true']))
             ->add('lastName', TextType::class)
             ->add('dateOfBirth', DateType::class, array(
                     'widget' => 'single_text',
                     'html5' => false,
-                    'attr' => ['class' => 'js-datepicker'],
+                    'attr' => ['class' => 'js-datepicker','data-required' => 'true'],
                     'format' => 'dd/MM/yyyy',
             ))
             ->add('gender', EntityType::class, array(
                         'class' => 'UserBundle:Gender',
                         'choice_label' => 'name',
                         'expanded' => true,
+                        'attr' => ['data-required' => 'true']
                     ))
             ->add('bloodGroup', EntityType::class, array(
                         'class' => 'UserBundle:BloodGroup',
                         'choice_label' => 'name',
+                        'attr' => ['data-required' => 'true']
                     ))
             ->add('emailIds', CollectionType::class, array(
                 'entry_type'   => UserMailAddressType::class,
                 'entry_options'  => array(
-                'attr'      => array('class' => 'emailId')
+                'attr'      => array('class' => 'emailId', 'data-required' => 'true')
             ),
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
                 'label' => false,
-                'by_reference' => false
-             ))
+                ))
             ->add('mobileNumbers', CollectionType::class, array(
                 'entry_type'   => UserContactNumberType::class,
                 'entry_options'  => array(
-                    'attr'      => array('class' => 'number'),
+                    'attr'      => array('class' => 'number', 'data-required' => 'true'),
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -64,7 +59,7 @@ class UserType extends AbstractType
             ->add('education', CollectionType::class, array(
                 'entry_type'   => UserGraduationType::class,
                 'entry_options'  => array(
-                    'attr'      => array('class' => 'graduation_type'),
+                    'attr'      => array('class' => 'graduation_type', 'data-required' => 'true'),
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
@@ -73,7 +68,7 @@ class UserType extends AbstractType
             ->add('interests', CollectionType::class, array(
                 'entry_type'   => UserAreaOfInterestType::class,
                 'entry_options'  => array(
-                    'attr'      => array('class' => 'interest'),
+                    'attr'      => array('class' => 'interest', 'data-required' => 'true'),
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,

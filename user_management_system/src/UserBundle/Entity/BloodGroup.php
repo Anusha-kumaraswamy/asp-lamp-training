@@ -8,7 +8,7 @@ namespace UserBundle\Entity;
 class BloodGroup
 {
     /**
-     * @var boolean
+     * @var integer
      */
     private $id;
 
@@ -21,7 +21,7 @@ class BloodGroup
     /**
      * Get id
      *
-     * @return boolean
+     * @return integer
      */
     public function getId()
     {

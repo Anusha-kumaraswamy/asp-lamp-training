@@ -190,8 +190,6 @@ class User
     {
         $this->emailIds[] = $emailId;
 
-        $emailId->setUser($this);
-        
         return $this;
     }
 
@@ -226,8 +224,6 @@ class User
     {
         $this->mobileNumbers[] = $mobileNumber;
 
-        $mobileNumber->setUser($this);     
-        
         return $this;
     }
 
@@ -261,8 +257,6 @@ class User
     public function addEducation(\UserBundle\Entity\UserGraduation $education)
     {
         $this->education[] = $education;
-
-        $education->setUser($this);
 
         return $this;
     }
@@ -298,8 +292,6 @@ class User
     {
         $this->interests[] = $interest;
 
-        $interest->setUser($this);
-        
         return $this;
     }
 

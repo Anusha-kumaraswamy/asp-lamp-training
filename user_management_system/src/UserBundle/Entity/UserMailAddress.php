@@ -44,6 +44,8 @@ class UserMailAddress
     {
         $this->email = $email;
 
+        $email->setUser($this);
+        
         return $this;
     }
 

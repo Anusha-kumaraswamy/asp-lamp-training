@@ -1,6 +1,6 @@
 <?php
 
-/* @Twig/Exception/logs.html.twig */
+/* TwigBundle:Exception:logs.html.twig */
 class __TwigTemplate_bd86dbc7aa7b8e83fd532e36031789eb38741cf64d0b4cce977004d2f61449fd extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -15,11 +15,11 @@ class __TwigTemplate_bd86dbc7aa7b8e83fd532e36031789eb38741cf64d0b4cce977004d2f61
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ed4e9509b7acaaf167ab0dc8912beebfd078312130a62d7f415a2336f628479b = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_ed4e9509b7acaaf167ab0dc8912beebfd078312130a62d7f415a2336f628479b->enter($__internal_ed4e9509b7acaaf167ab0dc8912beebfd078312130a62d7f415a2336f628479b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Twig/Exception/logs.html.twig"));
+        $__internal_9aedf549a04e0bb60fbe604669d33b8f704b486e89f5d4e5e2e07d8682d7a6ce = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_9aedf549a04e0bb60fbe604669d33b8f704b486e89f5d4e5e2e07d8682d7a6ce->enter($__internal_9aedf549a04e0bb60fbe604669d33b8f704b486e89f5d4e5e2e07d8682d7a6ce_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "TwigBundle:Exception:logs.html.twig"));
 
-        $__internal_23c79c2a9546eb42211a46fc280d6839d6cd3738562c3d87dc68b86406bfd621 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_23c79c2a9546eb42211a46fc280d6839d6cd3738562c3d87dc68b86406bfd621->enter($__internal_23c79c2a9546eb42211a46fc280d6839d6cd3738562c3d87dc68b86406bfd621_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Twig/Exception/logs.html.twig"));
+        $__internal_8a6220b00cf66c0a528e70c236c2e6830657ae02415353e4d70ee6bc3f29b4cd = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8a6220b00cf66c0a528e70c236c2e6830657ae02415353e4d70ee6bc3f29b4cd->enter($__internal_8a6220b00cf66c0a528e70c236c2e6830657ae02415353e4d70ee6bc3f29b4cd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "TwigBundle:Exception:logs.html.twig"));
 
         // line 1
         $context["channel_is_defined"] = $this->getAttribute(twig_first($this->env, (isset($context["logs"]) ? $context["logs"] : $this->getContext($context, "logs"))), "channel", array(), "any", true, true);
@@ -86,16 +86,16 @@ class __TwigTemplate_bd86dbc7aa7b8e83fd532e36031789eb38741cf64d0b4cce977004d2f61
 </table>
 ";
         
-        $__internal_ed4e9509b7acaaf167ab0dc8912beebfd078312130a62d7f415a2336f628479b->leave($__internal_ed4e9509b7acaaf167ab0dc8912beebfd078312130a62d7f415a2336f628479b_prof);
+        $__internal_9aedf549a04e0bb60fbe604669d33b8f704b486e89f5d4e5e2e07d8682d7a6ce->leave($__internal_9aedf549a04e0bb60fbe604669d33b8f704b486e89f5d4e5e2e07d8682d7a6ce_prof);
 
         
-        $__internal_23c79c2a9546eb42211a46fc280d6839d6cd3738562c3d87dc68b86406bfd621->leave($__internal_23c79c2a9546eb42211a46fc280d6839d6cd3738562c3d87dc68b86406bfd621_prof);
+        $__internal_8a6220b00cf66c0a528e70c236c2e6830657ae02415353e4d70ee6bc3f29b4cd->leave($__internal_8a6220b00cf66c0a528e70c236c2e6830657ae02415353e4d70ee6bc3f29b4cd_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@Twig/Exception/logs.html.twig";
+        return "TwigBundle:Exception:logs.html.twig";
     }
 
     public function isTraitable()
@@ -146,6 +146,6 @@ class __TwigTemplate_bd86dbc7aa7b8e83fd532e36031789eb38741cf64d0b4cce977004d2f61
     {% endfor %}
     </tbody>
 </table>
-", "@Twig/Exception/logs.html.twig", "/var/www/html/asp-lamp-training/user_management_system/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views/Exception/logs.html.twig");
+", "TwigBundle:Exception:logs.html.twig", "/var/www/html/asp-lamp-training/user_management_system/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views/Exception/logs.html.twig");
     }
 }
